@@ -76,3 +76,11 @@ Do NOT default to any of these unless the brief specifically calls for it:
 ## When the brief doesn't specify
 
 If the brief leaves an axis open (color, type, layout), don't spend that freedom on a default — make a deliberate choice and be ready to explain why it fits this specific project.
+
+## Reference templates
+
+The user may link a hosted template (e.g. a 21st.dev/21st.app template URL) as a visual reference — typically a modern glassmorphism look. Treat these as one option in the toolkit, not a default:
+
+- Pull layout/component/glassmorphism-technique ideas from the linked template only when it actually fits the brief under "Ground it in the actual subject" above. A glassmorphism AI-dashboard reference is a good fit for another dashboard/tool brief; it is not a good fit for, say, a boutique hotel or a nonprofit site, and should not be force-applied there.
+- Never literally clone another site's branding, copy, or identity to make an unrelated project "look official" — that's a trust/impersonation risk, not a style choice. Borrow layout and technique patterns, not brand identity.
+- If the template URL isn't reachable from the current environment's network policy (this has happened with `21st.dev`/`21st.app` domains before), say so rather than guessing at its design — ask the user for a screenshot or description instead.
