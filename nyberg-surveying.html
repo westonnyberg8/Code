@@ -330,6 +330,77 @@
   .station p { color: var(--on-light-muted); font-size: 0.98rem; }
   .history-rail { display: none; }
 
+  /* ================= PIN LOCATION (Leaflet map) ================= */
+  /* Leaflet core CSS, inlined so map chrome renders even where an external stylesheet would be blocked */
+  .leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane > svg,.leaflet-pane > canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden;-webkit-tap-highlight-color:transparent}.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{-webkit-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:transparent}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg,.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer,.leaflet-container .leaflet-tile{max-width:none!important;max-height:none!important}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-popup-pane,.leaflet-control{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-image-layer,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-marker-icon.leaflet-interactive,.leaflet-image-layer.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078A8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font:12px/1.5 "Libre Franklin",sans-serif}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.35);border-radius:8px;overflow:hidden}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:30px;height:30px;line-height:30px;display:block;text-align:center;text-decoration:none;color:#1B2A31;font:bold 18px 'Lucida Console',Monaco,monospace}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:hover,.leaflet-bar a:focus{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:8px;border-top-right-radius:8px}.leaflet-bar a:last-child{border-bottom-left-radius:8px;border-bottom-right-radius:8px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font-size:20px}.leaflet-control-attribution{background:rgba(244,247,242,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:2px 8px;font-size:11px;color:#4E5D57}.leaflet-control-attribution a{color:#33544A}.leaflet-control-attribution svg{position:relative}
+
+  .pin-section { overflow: hidden; }
+  .pin-tools { display: grid; grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr); gap: var(--s4); align-items: start; margin-top: var(--s4); }
+  .pin-help { color: var(--on-light-muted); font-size: 0.95rem; }
+  .pin-help strong { color: var(--on-light); }
+  .pin-readout {
+    margin-top: var(--s3);
+    background: var(--ink);
+    color: var(--on-dark);
+    border: 1px solid rgba(150, 180, 176, 0.24);
+    border-radius: var(--radius-lg);
+    padding: var(--s3);
+  }
+  .pin-readout .ro-state { color: var(--on-dark-muted); }
+  .pin-readout .ro-lot { font-size: 1.05rem; font-weight: 650; font-stretch: 100%; text-transform: none; letter-spacing: 0; line-height: 1.4; }
+  .pin-readout .ro-area { color: var(--on-dark-muted); font-size: 0.9rem; font-weight: 500; margin: 0.15rem 0 var(--s2); }
+  .pin-readout .btn { width: 100%; margin-top: 0.25rem; }
+  .pin-readout .btn[disabled] { opacity: 0.45; pointer-events: none; }
+  .pin-map-wrap { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line-light); box-shadow: 0 30px 60px -30px rgba(27, 42, 49, 0.35); }
+  #pin-map { height: 560px; width: 100%; background: var(--paper-2); }
+  .pin-search {
+    position: absolute; z-index: 1000; top: var(--s2); left: var(--s2); right: var(--s2);
+    max-width: 24rem;
+  }
+  .pin-search-box {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: var(--glass-light); border: 1px solid var(--glass-light-border);
+    border-radius: 10px; padding: 0.4rem 0.4rem 0.4rem 0.9rem;
+    -webkit-backdrop-filter: blur(16px) saturate(130%); backdrop-filter: blur(16px) saturate(130%);
+    box-shadow: 0 12px 30px -10px rgba(27, 42, 49, 0.35);
+  }
+  .pin-search-box svg { flex: none; color: var(--on-light-muted); }
+  .pin-search-box input {
+    flex: 1; min-width: 0; border: 0; background: transparent; font: inherit; font-size: 0.98rem;
+    color: var(--on-light); min-height: 40px;
+  }
+  .pin-search-box input:focus-visible { outline: none; }
+  .pin-search-box input::placeholder { color: var(--on-light-muted); }
+  .pin-search-go {
+    flex: none; min-height: 38px; min-width: 38px; border-radius: 7px; border: 0; cursor: pointer;
+    background: var(--flag); color: var(--ink); display: flex; align-items: center; justify-content: center;
+  }
+  .pin-search-go:hover { background: var(--flag-hover); }
+  .pin-suggestions {
+    list-style: none; margin: 0.5rem 0 0; padding: 0.35rem;
+    background: var(--paper-2); border: 1px solid var(--line-light); border-radius: 10px;
+    box-shadow: 0 20px 40px -16px rgba(27, 42, 49, 0.4);
+    max-height: 15rem; overflow-y: auto;
+  }
+  .pin-suggestions li { border-radius: 7px; }
+  .pin-suggestions button {
+    display: block; width: 100%; text-align: left; background: transparent; border: 0; cursor: pointer;
+    font: inherit; font-size: 0.92rem; color: var(--on-light); padding: 0.55rem 0.65rem; border-radius: 7px;
+  }
+  .pin-suggestions li[aria-selected="true"] button, .pin-suggestions button:hover { background: rgba(240, 120, 47, 0.14); }
+  .pin-search-status { font-size: 0.85rem; color: var(--on-light-muted); padding: 0.5rem 0.65rem 0.15rem; }
+  .pin-marker-icon { display: block; }
+  .pin-caption { color: var(--on-light-muted); font-size: 0.82rem; margin-top: var(--s2); }
+  .pin-caption a { color: var(--flag-ink); }
+  @media (max-width: 900px) {
+    .pin-tools { grid-template-columns: minmax(0, 1fr); }
+    #pin-map { height: 420px; }
+  }
+  @media (max-width: 640px) {
+    #pin-map { height: 380px; }
+    .pin-search { max-width: none; }
+  }
+
   /* ================= CONTACT ================= */
   .contact { background: var(--ink); color: var(--on-dark); overflow: hidden; }
   .contact-layout { position: relative; display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: var(--s5); align-items: start; }
@@ -372,6 +443,7 @@
   }
   .field textarea { min-height: 110px; resize: vertical; }
   .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: none; border-color: var(--flag); box-shadow: 0 0 0 3px rgba(240, 120, 47, 0.45); }
+  .field input.pin-filled { border-color: var(--flag); box-shadow: 0 0 0 3px rgba(240, 120, 47, 0.45); transition: box-shadow 200ms ease, border-color 200ms ease; }
   .field [aria-invalid="true"] { border-color: #FF9A8A; box-shadow: 0 0 0 2px rgba(255, 154, 138, 0.35); }
   .field .error { color: #FFB4A8; font-size: 0.88rem; font-weight: 600; }
   .form-summary { background: rgba(255, 154, 138, 0.12); border: 1px solid rgba(255, 154, 138, 0.5); border-radius: 10px; padding: var(--s2); margin-bottom: var(--s3); }
@@ -933,6 +1005,46 @@
     </div>
   </section>
 
+  <!-- ============ PIN LOCATION ============ -->
+  <section class="section section-light pin-section" id="pin-location" aria-labelledby="pin-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-eyebrow">Meet us there</p>
+        <h2 id="pin-title">Pin your exact spot</h2>
+        <p>Search a street, city, or landmark anywhere in Minnesota, North Dakota, or South Dakota, or click straight on the map. Drop a pin and we'll know exactly where to meet.</p>
+      </div>
+
+      <div class="pin-tools">
+        <div>
+          <p class="pin-help">
+            Type an address above the map, or click any spot to drop a pin. Drag the pin to fine-tune it, and use <strong>Use this location</strong> to carry it into the survey request form below.
+          </p>
+          <div class="pin-readout">
+            <p class="ro-state" id="pin-state"><span class="dot" aria-hidden="true"></span><span id="pin-state-text">No pin yet</span></p>
+            <p class="ro-lot" id="pin-address">Search above or click the map to drop a pin.</p>
+            <p class="ro-area" id="pin-coords"></p>
+            <button class="btn btn-flag" type="button" id="pin-use-btn" disabled>Use this location for my request</button>
+          </div>
+        </div>
+
+        <div class="pin-map-wrap">
+          <div id="pin-map" role="application" aria-label="Map of Minnesota, North Dakota, and South Dakota for choosing a meeting or survey location"></div>
+          <div class="pin-search">
+            <div class="pin-search-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 20 L16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <input id="pin-search-input" type="text" role="combobox" aria-expanded="false" aria-controls="pin-suggestions" aria-autocomplete="list" autocomplete="off" placeholder="Search a street, city, or landmark" />
+              <button class="pin-search-go" type="button" id="pin-search-go" aria-label="Search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <ul class="pin-suggestions" id="pin-suggestions" role="listbox" hidden></ul>
+          </div>
+        </div>
+      </div>
+      <p class="pin-caption">Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors. Search results are limited to Minnesota, North Dakota, and South Dakota.</p>
+    </div>
+  </section>
+
   <!-- ============ CONTACT ============ -->
   <section class="section contact" id="contact" aria-labelledby="contact-title">
     <svg class="contours" data-contours="dark" aria-hidden="true"></svg>
@@ -1068,6 +1180,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1842,6 +1955,185 @@
       setStep: setStep,
       animate: function (on) { svg.classList.toggle("plat-anim", on); setStep(on ? 1 : N + 1); }
     };
+  })();
+
+  /* ---------- PIN LOCATION: searchable Leaflet map over MN/ND/SD ---------- */
+  (function initPinMap() {
+    var host = document.getElementById("pin-map");
+    if (!host || typeof L === "undefined") return;
+
+    // Minnesota + North Dakota + South Dakota, roughly
+    var TRISTATE_BOUNDS = [[42.3, -104.3], [49.4, -89.2]];
+    var VIEWBOX = "-104.3,49.4,-89.2,42.3"; // left,top,right,bottom for Nominatim
+    var map = L.map(host, { scrollWheelZoom: true, zoomControl: false, attributionControl: false });
+    map.fitBounds(TRISTATE_BOUNDS, { padding: [12, 12] });
+    L.control.zoom({ position: "bottomright" }).addTo(map);
+    L.control.attribution({ prefix: false, position: "bottomright" }).addTo(map).addAttribution("&copy; OpenStreetMap contributors");
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      subdomains: "abc",
+      attribution: "",
+    }).addTo(map);
+
+    var pinIcon = L.divIcon({
+      className: "pin-marker-icon",
+      html: '<svg width="34" height="44" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg">' +
+        '<path d="M17 2C9.3 2 3 8.1 3 15.6 3 25.8 17 42 17 42s14-16.2 14-26.4C31 8.1 24.7 2 17 2Z" fill="#E2A33B" stroke="#1B2A31" stroke-width="1.6"/>' +
+        '<circle cx="17" cy="15.6" r="5.6" fill="#1B2A31"/></svg>',
+      iconSize: [34, 44],
+      iconAnchor: [17, 42],
+    });
+    var marker = null;
+
+    var stateEl = document.getElementById("pin-state-text");
+    var addressEl = document.getElementById("pin-address");
+    var coordsEl = document.getElementById("pin-coords");
+    var useBtn = document.getElementById("pin-use-btn");
+    var current = null; // { lat, lng, label }
+
+    function fmtCoord(n) { return n.toFixed(5); }
+
+    function setPin(lat, lng, label, opts) {
+      opts = opts || {};
+      if (!marker) {
+        marker = L.marker([lat, lng], { icon: pinIcon, draggable: true, keyboard: false }).addTo(map);
+        marker.on("dragend", function () {
+          var p = marker.getLatLng();
+          setPin(p.lat, p.lng, null, { fromDrag: true });
+        });
+      } else {
+        marker.setLatLng([lat, lng]);
+      }
+      current = { lat: lat, lng: lng, label: label || null };
+      stateEl.textContent = "Pin set";
+      coordsEl.textContent = fmtCoord(lat) + ", " + fmtCoord(lng);
+      addressEl.textContent = label || "Locating address…";
+      useBtn.disabled = false;
+      if (!opts.skipView) {
+        var z = Math.max(map.getZoom(), 14);
+        if (reduceMotion) map.setView([lat, lng], z); else map.flyTo([lat, lng], z, { duration: 0.9 });
+      }
+      if (!label) reverseGeocode(lat, lng);
+    }
+
+    function reverseGeocode(lat, lng) {
+      var url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + lat + "&lon=" + lng + "&zoom=18";
+      fetch(url, { headers: { Accept: "application/json" } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (!current || current.lat !== lat || current.lng !== lng) return; // superseded
+          var label = data && data.display_name ? data.display_name : "Dropped pin (no address match)";
+          current.label = label;
+          addressEl.textContent = label;
+        })
+        .catch(function () {
+          if (current && current.lat === lat && current.lng === lng) addressEl.textContent = "Dropped pin (address lookup unavailable)";
+        });
+    }
+
+    map.on("click", function (e) { setPin(e.latlng.lat, e.latlng.lng, null, { skipView: true }); });
+
+    /* ---- search ---- */
+    var input = document.getElementById("pin-search-input");
+    var list = document.getElementById("pin-suggestions");
+    var goBtn = document.getElementById("pin-search-go");
+    var results = [], activeIndex = -1, searchSeq = 0, debounceTimer = null;
+
+    function closeList() {
+      list.hidden = true;
+      list.innerHTML = "";
+      input.setAttribute("aria-expanded", "false");
+      input.removeAttribute("aria-activedescendant");
+      activeIndex = -1;
+    }
+    function renderList(items, statusText) {
+      results = items;
+      list.innerHTML = "";
+      if (statusText) {
+        var s = document.createElement("li");
+        s.className = "pin-search-status";
+        s.textContent = statusText;
+        list.appendChild(s);
+      }
+      items.forEach(function (item, i) {
+        var li = document.createElement("li");
+        li.setAttribute("role", "option");
+        li.id = "pin-opt-" + i;
+        li.setAttribute("aria-selected", "false");
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = item.display_name;
+        btn.addEventListener("click", function () { chooseResult(item); });
+        li.appendChild(btn);
+        list.appendChild(li);
+      });
+      list.hidden = items.length === 0 && !statusText;
+      input.setAttribute("aria-expanded", list.hidden ? "false" : "true");
+    }
+    function chooseResult(item) {
+      closeList();
+      input.value = item.display_name;
+      setPin(parseFloat(item.lat), parseFloat(item.lon), item.display_name);
+    }
+    function runSearch(q) {
+      if (!q || q.trim().length < 3) { closeList(); return; }
+      var seq = ++searchSeq;
+      renderList([], "Searching…");
+      var url = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=6&countrycodes=us&viewbox=" + VIEWBOX + "&bounded=1&q=" + encodeURIComponent(q);
+      fetch(url, { headers: { Accept: "application/json" } })
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (data) {
+          if (seq !== searchSeq) return;
+          if (!data || !data.length) { renderList([], "No matches in Minnesota, North Dakota, or South Dakota"); return; }
+          renderList(data, null);
+        })
+        .catch(function () {
+          if (seq !== searchSeq) return;
+          renderList([], "Search unavailable right now");
+        });
+    }
+    input.addEventListener("input", function () {
+      clearTimeout(debounceTimer);
+      var v = input.value;
+      debounceTimer = setTimeout(function () { runSearch(v); }, 380);
+    });
+    input.addEventListener("keydown", function (e) {
+      if (list.hidden && e.key !== "Enter") return;
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        if (!results.length) return;
+        activeIndex = e.key === "ArrowDown" ? Math.min(activeIndex + 1, results.length - 1) : Math.max(activeIndex - 1, 0);
+        Array.prototype.forEach.call(list.querySelectorAll("li[role=option]"), function (li, i) { li.setAttribute("aria-selected", String(i === activeIndex)); });
+        input.setAttribute("aria-activedescendant", "pin-opt-" + activeIndex);
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (activeIndex >= 0 && results[activeIndex]) chooseResult(results[activeIndex]);
+        else if (results.length) chooseResult(results[0]);
+        else runSearch(input.value);
+      } else if (e.key === "Escape") {
+        closeList();
+      }
+    });
+    goBtn.addEventListener("click", function () { if (results.length) chooseResult(results[activeIndex >= 0 ? activeIndex : 0]); else runSearch(input.value); });
+    document.addEventListener("click", function (e) { if (!e.target.closest(".pin-search")) closeList(); });
+
+    /* ---- hand off to the request form ---- */
+    useBtn.addEventListener("click", function () {
+      if (!current) return;
+      var field = document.getElementById("f-property");
+      var text = current.label
+        ? current.label + " (" + fmtCoord(current.lat) + ", " + fmtCoord(current.lng) + ")"
+        : "Pinned location: " + fmtCoord(current.lat) + ", " + fmtCoord(current.lng);
+      field.value = text;
+      document.getElementById("contact").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      field.focus();
+      field.classList.add("pin-filled");
+      setTimeout(function () { field.classList.remove("pin-filled"); }, 1600);
+    });
+
+    // keep the map correctly sized once its section actually has layout (fonts/loading can shift it)
+    window.addEventListener("load", function () { map.invalidateSize(); });
+    if ("ResizeObserver" in window) new ResizeObserver(function () { map.invalidateSize(); }).observe(host);
   })();
 
   /* ---------- GSAP choreography ---------- */
