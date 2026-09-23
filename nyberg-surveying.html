@@ -1,0 +1,1502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Nyberg Surveying, Inc. | Land Surveyors in Alexandria, MN</title>
+<meta name="description" content="Family-owned land surveyors in Alexandria, Minnesota since 1982. Boundary, ALTA/NSPS, topographic, subdivision, building permit, and construction staking surveys across Minnesota, North Dakota, and South Dakota." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1B2A31;
+    --ink-2: #22343C;
+    --ink-3: #142127;
+    --paper: #E8EEE5;
+    --paper-2: #F4F7F2;
+    --flag: #F0782F;
+    --flag-hover: #F58B48;
+    --flag-ink: #A8460F;
+    --grid: #6E9469;
+    --lake: #4C6B78;
+    --on-dark: #E9EEEA;
+    --on-dark-muted: #A9B8B5;
+    --on-light: #1B2A31;
+    --on-light-muted: #4E5D57;
+    --line-light: #C9D4C6;
+    --glass-dark: rgba(34, 52, 60, 0.42);
+    --glass-dark-border: rgba(150, 180, 176, 0.26);
+    --glass-light: rgba(244, 247, 242, 0.62);
+    --glass-light-border: rgba(255, 255, 255, 0.85);
+    --radius: 10px;
+    --radius-lg: 18px;
+    --s1: 0.5rem;
+    --s2: 1rem;
+    --s3: 1.5rem;
+    --s4: 2.5rem;
+    --s5: 4rem;
+    --s6: 6.5rem;
+    --wrap: 76rem;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--on-light);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-stretch: 100%;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-variant-numeric: tabular-nums;
+  }
+  h1, h2, h3 {
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-stretch: 115%;
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  p { margin: 0 0 var(--s2); max-width: 62ch; }
+  a { color: inherit; }
+  img, svg, canvas { display: block; max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .skip-link {
+    position: absolute; left: 1rem; top: -5rem; z-index: 300;
+    background: var(--flag); color: var(--ink);
+    padding: 0.75rem 1.1rem; border-radius: 8px; font-weight: 700; text-decoration: none;
+  }
+  .skip-link:focus { top: 1rem; }
+  :focus-visible { outline: 3px solid var(--flag); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    min-height: 48px; padding: 0.8rem 1.4rem; border-radius: 8px;
+    font: inherit; font-weight: 650; font-size: 1rem; text-decoration: none;
+    border: 1px solid transparent; cursor: pointer;
+    transition: background-color 180ms ease, transform 180ms var(--ease-out), border-color 180ms ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-flag { background: var(--flag); color: var(--ink); }
+  .btn-flag:hover { background: var(--flag-hover); }
+  .btn-glass {
+    color: var(--on-dark);
+    background: rgba(233, 238, 234, 0.08);
+    border-color: var(--glass-dark-border);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  }
+  .btn-glass:hover { background: rgba(233, 238, 234, 0.14); }
+  .btn svg { flex: none; }
+
+  /* ================= NAV (glass layer 1: strongest blur) ================= */
+  .site-nav {
+    position: fixed; z-index: 100; left: 0; right: 0;
+    top: calc(env(safe-area-inset-top, 0px) + 14px);
+    padding-inline: clamp(0.75rem, 3vw, 1.5rem);
+    pointer-events: none;
+  }
+  .nav-bar {
+    pointer-events: auto;
+    max-width: var(--wrap); margin-inline: auto;
+    display: flex; align-items: center; justify-content: space-between; gap: var(--s2);
+    padding: 0.55rem 0.6rem 0.55rem 1.1rem;
+    background: rgba(27, 42, 49, 0.55);
+    border: 1px solid rgba(150, 180, 176, 0.24);
+    border-radius: 14px;
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: 0 10px 30px rgba(10, 18, 22, 0.22);
+    color: var(--on-dark);
+  }
+  .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; flex: none; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
+  .brand-name { font-stretch: 118%; font-weight: 800; font-size: 1.08rem; letter-spacing: -0.01em; }
+  .brand-sub { font-size: 0.74rem; color: var(--on-dark-muted); }
+  .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    display: inline-flex; align-items: center; min-height: 44px;
+    padding: 0 0.8rem; border-radius: 8px;
+    text-decoration: none; font-size: 0.95rem; font-weight: 550; color: #D6DEDB;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+  .nav-links a:hover { color: #fff; background: rgba(233, 238, 234, 0.08); }
+  .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+  .nav-phone { font-weight: 650; }
+  .nav-cta { min-height: 44px; padding: 0.55rem 1rem; font-size: 0.95rem; }
+  .menu-toggle {
+    display: none; min-height: 44px; min-width: 44px; border-radius: 8px;
+    background: rgba(233, 238, 234, 0.08); border: 1px solid var(--glass-dark-border); color: var(--on-dark);
+    align-items: center; justify-content: center; cursor: pointer;
+  }
+  .mobile-menu {
+    pointer-events: auto;
+    max-width: var(--wrap); margin: 0.5rem auto 0;
+    background: rgba(27, 42, 49, 0.78);
+    border: 1px solid rgba(150, 180, 176, 0.24);
+    border-radius: 14px; padding: 0.5rem;
+    -webkit-backdrop-filter: blur(20px) saturate(150%); backdrop-filter: blur(20px) saturate(150%);
+  }
+  .mobile-menu ul { list-style: none; margin: 0; padding: 0; }
+  .mobile-menu a {
+    display: flex; align-items: center; min-height: 48px; padding: 0 1rem; border-radius: 8px;
+    color: var(--on-dark); text-decoration: none; font-weight: 600;
+  }
+  .mobile-menu a:hover { background: rgba(233, 238, 234, 0.08); }
+
+  /* ================= HERO ================= */
+  .hero {
+    position: relative; isolation: isolate; overflow: hidden;
+    min-height: min(100svh, 920px);
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 8rem);
+    padding-bottom: var(--s5);
+    background: radial-gradient(120% 90% at 75% 40%, #23363E 0%, var(--ink) 55%, var(--ink-3) 100%);
+    color: var(--on-dark);
+  }
+  .terrain { position: absolute; inset: 0; z-index: -2; }
+  .terrain canvas { width: 100% !important; height: 100% !important; }
+  .terrain-fallback { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.55; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(20, 33, 39, 0.92) 0%, rgba(20, 33, 39, 0.7) 34%, rgba(20, 33, 39, 0) 62%),
+      linear-gradient(0deg, rgba(20, 33, 39, 0.85) 0%, rgba(20, 33, 39, 0) 28%);
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: var(--s4); align-items: end;
+  }
+  .hero-content { max-width: 40rem; }
+  .hero-locale { color: var(--flag); font-weight: 650; font-size: 0.98rem; margin-bottom: var(--s2); }
+  .hero h1 { font-size: clamp(2.35rem, 5vw, 4rem); }
+  .hero-line { display: block; overflow: hidden; padding-bottom: 0.06em; }
+  .hero-line > span { display: block; }
+  .hero-sub { margin-top: var(--s3); font-size: 1.12rem; color: #C3CFCB; max-width: 44ch; }
+  .hero-actions { margin-top: var(--s4); display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  /* glass layer 2 (medium blur, sits over live 3D) */
+  .readout {
+    justify-self: end; width: min(100%, 22rem);
+    background: var(--glass-dark);
+    border: 1px solid var(--glass-dark-border);
+    border-radius: var(--radius-lg);
+    padding: var(--s3);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .readout-title { font-size: 0.85rem; font-weight: 650; color: var(--on-dark-muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+  .readout-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--flag); box-shadow: 0 0 0 4px rgba(240, 120, 47, 0.2); }
+  .readout dl { margin: 0; display: grid; grid-template-columns: auto 1fr; }
+  .readout dt, .readout dd { padding: 0.62rem 0; border-top: 1px solid rgba(150, 180, 176, 0.18); }
+  .readout dt { color: var(--on-dark-muted); font-size: 0.9rem; padding-right: var(--s2); }
+  .readout dd { margin: 0; text-align: right; font-weight: 650; font-size: 0.98rem; }
+
+  /* ================= SECTIONS ================= */
+  .section { padding-block: var(--s6); position: relative; }
+  .section-light { background: var(--paper); color: var(--on-light); }
+  .section-dark { background: var(--ink); color: var(--on-dark); }
+  .section-head { max-width: 40rem; margin-bottom: var(--s4); }
+  .section-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
+  .section-head p { margin-top: var(--s2); font-size: 1.08rem; }
+  .section-light .section-head p { color: var(--on-light-muted); }
+  .section-dark .section-head p { color: var(--on-dark-muted); }
+
+  .contours { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+  /* ================= SERVICES ================= */
+  .services { overflow: hidden; }
+  .services-glow {
+    position: absolute; width: 46rem; height: 46rem; right: -12rem; top: 10%; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(240, 120, 47, 0.22), rgba(110, 148, 105, 0.16) 55%, transparent);
+    pointer-events: none;
+  }
+  .services-layout {
+    position: relative; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--s4); align-items: start;
+  }
+  .service-tabs { display: flex; flex-direction: column; border-top: 1px solid var(--line-light); }
+  .service-tab {
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--s2);
+    width: 100%; min-height: 58px; padding: 0.85rem 0.5rem 0.85rem 0.9rem;
+    background: transparent; border: 0; border-bottom: 1px solid var(--line-light);
+    font: inherit; font-size: 1.05rem; font-weight: 600; text-align: left; color: var(--on-light);
+    cursor: pointer; position: relative;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+  .service-tab::before {
+    content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 2px;
+    background: var(--flag); transform: scaleY(0); transform-origin: center;
+    transition: transform 280ms var(--ease-out);
+  }
+  .service-tab:hover { background: rgba(255, 255, 255, 0.4); }
+  .service-tab[aria-selected="true"] { color: var(--flag-ink); }
+  .service-tab[aria-selected="true"]::before { transform: scaleY(1); }
+  .service-tab .tab-hint { font-size: 0.85rem; font-weight: 500; color: var(--on-light-muted); }
+
+  /* glass layer 3 (light glass on paper) */
+  .service-panel {
+    background: var(--glass-light);
+    border: 1px solid var(--glass-light-border);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    backdrop-filter: blur(16px) saturate(130%);
+    box-shadow: 0 30px 60px -30px rgba(27, 42, 49, 0.35);
+  }
+  .panel-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: var(--s3); align-items: center; }
+  .service-panel h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom: var(--s2); }
+  .service-panel p { color: #33423C; }
+  .panel-meta { margin: var(--s3) 0 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
+  .panel-meta li { display: flex; gap: 0.6rem; align-items: baseline; font-size: 0.96rem; color: #33423C; }
+  .panel-meta li strong { color: var(--on-light); font-weight: 650; flex: none; }
+  .plat {
+    background: var(--paper-2);
+    border: 1px solid var(--line-light);
+    border-radius: 12px;
+    aspect-ratio: 3 / 2; width: 100%;
+    background-image:
+      linear-gradient(rgba(110, 148, 105, 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 148, 105, 0.16) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+  .plat svg { width: 100%; height: 100%; }
+  .plat .stroke { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+  .plat .stroke-flag { fill: none; stroke: var(--flag); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+  .plat .stroke-soft { fill: none; stroke: var(--lake); stroke-width: 1.2; stroke-dasharray: 4 4; }
+  .plat .mon { fill: var(--flag); stroke: var(--ink); stroke-width: 1; }
+  .plat .label { font: 600 9px "Archivo", sans-serif; fill: var(--on-light-muted); }
+  .plat .draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .js .service-panel:not(.is-drawn) .draw { stroke-dashoffset: 1; }
+  .js .service-panel:not(.is-drawn) .pop { opacity: 0; transform: scale(0.4); }
+  .service-panel.is-drawn .draw { transition: stroke-dashoffset 1.2s var(--ease-out); }
+  .plat .pop { transform-box: fill-box; transform-origin: center; }
+  .service-panel.is-drawn .pop { transition: opacity 300ms ease 0.8s, transform 420ms var(--ease-out) 0.8s; }
+  .panel-cta { margin-top: var(--s3); display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+  .text-link { font-weight: 650; color: var(--flag-ink); text-underline-offset: 3px; }
+
+  /* ================= WHY ================= */
+  .why { background: var(--ink-2); color: var(--on-dark); overflow: hidden; }
+  .why-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: var(--s5); align-items: center; }
+  .why-stat { font-stretch: 118%; font-weight: 800; font-size: clamp(4rem, 11vw, 8.5rem); line-height: 0.9; letter-spacing: -0.03em; color: var(--flag); }
+  .why-stat-label { font-size: 1.25rem; font-weight: 600; margin-top: var(--s2); max-width: 26ch; }
+  .why-body { margin-top: var(--s3); color: var(--on-dark-muted); font-size: 1.05rem; }
+  .why-facts { margin-top: var(--s4); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid rgba(150, 180, 176, 0.22); }
+  .why-fact { padding: var(--s3) var(--s2) 0 0; }
+  .why-fact + .why-fact { padding-left: var(--s2); border-left: 1px solid rgba(150, 180, 176, 0.22); }
+  .why-fact strong { display: block; font-stretch: 115%; font-size: 1.5rem; font-weight: 700; color: var(--on-dark); }
+  .why-fact span { color: var(--on-dark-muted); font-size: 0.95rem; }
+  .cap-stage { position: relative; aspect-ratio: 1 / 1; width: min(100%, 26rem); justify-self: center; }
+  .cap-stage canvas { width: 100% !important; height: 100% !important; }
+  .cap-fallback { width: 100%; height: 100%; }
+  .cap-caption { text-align: center; color: var(--on-dark-muted); font-size: 0.9rem; margin-top: var(--s1); }
+
+  /* ================= HISTORY (traverse) ================= */
+  .history { overflow: hidden; }
+  .traverse { position: relative; margin-top: var(--s3); }
+  .traverse-svg { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 160px; overflow: visible; }
+  .traverse-path { fill: none; stroke: var(--flag); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .traverse-ghost { fill: none; stroke: var(--line-light); stroke-width: 1.5; stroke-dasharray: 5 6; vector-effect: non-scaling-stroke; }
+  .stations { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s3); }
+  .station { position: relative; padding-top: 180px; }
+  .station-dot {
+    position: absolute; left: 50%; width: 22px; height: 22px; margin-left: -11px; margin-top: -11px;
+    border-radius: 50%; background: var(--paper); border: 3px solid var(--flag);
+    box-shadow: 0 0 0 6px rgba(240, 120, 47, 0.14);
+  }
+  .station-dot::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--flag); }
+  .station:nth-child(1) .station-dot { top: 110px; }
+  .station:nth-child(2) .station-dot { top: 50px; }
+  .station:nth-child(3) .station-dot { top: 95px; }
+  .station:nth-child(4) .station-dot { top: 40px; }
+  .station-year { font-stretch: 118%; font-weight: 800; font-size: 1.9rem; color: var(--flag-ink); line-height: 1; }
+  .station h3 { font-size: 1.15rem; margin: 0.6rem 0 0.4rem; font-stretch: 105%; }
+  .station p { color: var(--on-light-muted); font-size: 0.98rem; }
+  .history-rail { display: none; }
+
+  /* ================= CONTACT ================= */
+  .contact { background: var(--ink); color: var(--on-dark); overflow: hidden; }
+  .contact-layout { position: relative; display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: var(--s5); align-items: start; }
+  .contact-details { display: grid; gap: var(--s3); margin-top: var(--s3); }
+  .contact-item h3 { font-size: 0.95rem; font-stretch: 100%; font-weight: 650; color: var(--on-dark-muted); margin-bottom: 0.3rem; letter-spacing: 0; }
+  .contact-item p, .contact-item a { font-size: 1.1rem; font-weight: 600; margin: 0; }
+  .contact-item a { text-decoration: none; }
+  .contact-item a:hover { color: var(--flag); text-decoration: underline; text-underline-offset: 3px; }
+  .contact-item .sub { display: block; font-size: 0.95rem; font-weight: 450; color: var(--on-dark-muted); margin-top: 0.2rem; }
+  .contact-item a.sub { display: inline-block; color: var(--flag); font-weight: 650; text-decoration: underline; text-underline-offset: 3px; min-height: 24px; }
+  .hours { display: grid; grid-template-columns: auto auto; justify-content: start; column-gap: var(--s3); row-gap: 0.2rem; font-size: 1rem; }
+  .hours dt { color: var(--on-dark-muted); }
+  .hours dd { margin: 0; font-weight: 600; }
+
+  /* glass layer 4 (form) */
+  .request {
+    background: rgba(34, 52, 60, 0.5);
+    border: 1px solid var(--glass-dark-border);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  .request-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s2); margin-bottom: var(--s3); padding-bottom: var(--s2); border-bottom: 1px dashed rgba(150, 180, 176, 0.35); }
+  .request-head h3 { font-size: 1.35rem; }
+  .request-head span { color: var(--on-dark-muted); font-size: 0.9rem; }
+  .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s2) var(--s2); }
+  .field { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field-wide { grid-column: 1 / -1; }
+  .field label { font-weight: 600; font-size: 0.95rem; color: var(--on-dark); }
+  .field .req { color: var(--flag); }
+  .field .help { font-size: 0.85rem; color: var(--on-dark-muted); }
+  .field input, .field select, .field textarea {
+    width: 100%; min-height: 48px; padding: 0.7rem 0.85rem;
+    font: inherit; font-size: 1rem; color: var(--on-light);
+    background: rgba(244, 247, 242, 0.95);
+    border: 1px solid rgba(150, 180, 176, 0.45); border-radius: 8px;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+  }
+  .field textarea { min-height: 110px; resize: vertical; }
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: none; border-color: var(--flag); box-shadow: 0 0 0 3px rgba(240, 120, 47, 0.45); }
+  .field [aria-invalid="true"] { border-color: #FF9A8A; box-shadow: 0 0 0 2px rgba(255, 154, 138, 0.35); }
+  .field .error { color: #FFB4A8; font-size: 0.88rem; font-weight: 600; }
+  .form-summary { background: rgba(255, 154, 138, 0.12); border: 1px solid rgba(255, 154, 138, 0.5); border-radius: 10px; padding: var(--s2); margin-bottom: var(--s3); }
+  .form-summary h4 { margin: 0 0 0.4rem; font-size: 1rem; }
+  .form-summary ul { margin: 0; padding-left: 1.1rem; }
+  .form-summary a { color: #FFD2CA; }
+  .form-actions { margin-top: var(--s3); display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+  .form-note { font-size: 0.88rem; color: var(--on-dark-muted); margin: 0; }
+  .form-success { text-align: left; }
+  .form-success h3 { font-size: 1.5rem; margin-bottom: var(--s2); }
+  .form-success p { color: var(--on-dark-muted); }
+  .form-success .check { width: 48px; height: 48px; margin-bottom: var(--s2); }
+
+  /* ================= FOOTER (plat title block) ================= */
+  .site-footer { background: var(--ink-3); color: var(--on-dark); padding-block: var(--s5) calc(var(--s4) + env(safe-area-inset-bottom, 0px)); }
+  .title-block {
+    display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.2fr);
+    border: 1px solid rgba(150, 180, 176, 0.3); border-radius: 4px;
+  }
+  .tb-cell { padding: var(--s2) var(--s3); border-right: 1px solid rgba(150, 180, 176, 0.3); overflow-wrap: anywhere; }
+  .tb-cell:nth-child(4n) { border-right: 0; }
+  .tb-cell:nth-child(n+5) { border-top: 1px solid rgba(150, 180, 176, 0.3); }
+  .tb-label { display: block; font-size: 0.78rem; color: var(--on-dark-muted); margin-bottom: 0.25rem; }
+  .tb-value { font-weight: 600; font-size: 0.98rem; }
+  .tb-firm { font-stretch: 118%; font-weight: 800; font-size: 1.35rem; line-height: 1.1; }
+  .tb-value a { text-decoration: none; }
+  .tb-value a:hover { color: var(--flag); }
+  .footer-note { margin-top: var(--s2); font-size: 0.85rem; color: #7F908C; }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 1060px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: inline-flex; }
+  }
+  @media (max-width: 900px) {
+    .hero { padding-top: calc(env(safe-area-inset-top, 0px) + 7rem); min-height: auto; }
+    .hero::after { background: linear-gradient(0deg, rgba(20, 33, 39, 0.94) 10%, rgba(20, 33, 39, 0.55) 55%, rgba(20, 33, 39, 0.35) 100%); }
+    .hero-grid, .services-layout, .why-grid, .contact-layout { grid-template-columns: minmax(0, 1fr); }
+    .readout { justify-self: start; }
+    .hero-content { padding-top: 40vh; }
+    .terrain { bottom: auto; height: calc(env(safe-area-inset-top, 0px) + 7rem + 40vh); }
+    .panel-grid { grid-template-columns: minmax(0, 1fr); }
+    .plat { order: -1; }
+    .why-grid { gap: var(--s4); }
+    .cap-stage { width: min(80%, 20rem); order: -1; }
+    .traverse-svg { display: none; }
+    .stations { grid-template-columns: minmax(0, 1fr); gap: var(--s4); padding-left: 2.5rem; }
+    .station { padding-top: 0; }
+    .station .station-dot { top: 4px !important; left: -2.5rem; margin-left: 0; }
+    .history-rail { display: block; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2.5px; background: var(--flag); transform-origin: top; border-radius: 2px; }
+    .title-block { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .tb-cell:nth-child(2n) { border-right: 0; }
+    .tb-cell:nth-child(n+3) { border-top: 1px solid rgba(150, 180, 176, 0.3); }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .nav-phone-label { display: none; }
+    .nav-cta { display: none; }
+    .brand-sub { display: none; }
+    .hero-actions .btn { width: 100%; }
+    .field-grid { grid-template-columns: minmax(0, 1fr); }
+    .why-facts { grid-template-columns: minmax(0, 1fr); }
+    .why-fact + .why-fact { padding-left: 0; border-left: 0; border-top: 1px solid rgba(150, 180, 176, 0.22); padding-top: var(--s2); }
+    .title-block { grid-template-columns: minmax(0, 1fr); }
+    .tb-cell { border-right: 0; }
+    .tb-cell + .tb-cell { border-top: 1px solid rgba(150, 180, 176, 0.3); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header class="site-nav">
+  <div class="nav-bar">
+    <a class="brand" href="#top" aria-label="Nyberg Surveying, home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="14" fill="none" stroke="#F0782F" stroke-width="2"/>
+        <circle cx="16" cy="16" r="9" fill="none" stroke="#E9EEEA" stroke-width="1.2" opacity="0.6"/>
+        <path d="M16 9.5 L22 20.5 H10 Z" fill="#F0782F"/>
+        <path d="M16 4 V9 M16 23 V28 M4 16 H9 M23 16 H28" stroke="#E9EEEA" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">Nyberg</span>
+        <span class="brand-sub">Surveying, Inc.</span>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Nyberg</a></li>
+        <li><a href="#history">Since 1982</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-glass nav-cta nav-phone" href="tel:+13207624111">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span class="nav-phone-label">(320) 762-4111</span>
+      </a>
+      <a class="btn btn-flag nav-cta" href="#contact">Request a survey</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Nyberg</a></li>
+      <li><a href="#history">Since 1982</a></li>
+      <li><a href="#contact">Request a survey</a></li>
+      <li><a href="tel:+13207624111">Call (320) 762-4111</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="terrain" id="terrain">
+      <svg class="terrain-fallback" id="terrain-fallback" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g fill="none" stroke="#6E9469" stroke-width="1.2" opacity="0.8">
+          <ellipse cx="840" cy="360" rx="330" ry="210" transform="rotate(-12 840 360)"/>
+          <ellipse cx="840" cy="360" rx="270" ry="170" transform="rotate(-10 840 360)"/>
+          <ellipse cx="830" cy="355" rx="210" ry="130" transform="rotate(-8 830 355)"/>
+          <ellipse cx="820" cy="350" rx="150" ry="92" transform="rotate(-6 820 350)"/>
+          <ellipse cx="812" cy="346" rx="92" ry="56" transform="rotate(-4 812 346)"/>
+          <ellipse cx="806" cy="344" rx="40" ry="24"/>
+          <ellipse cx="1080" cy="610" rx="180" ry="110" transform="rotate(14 1080 610)"/>
+          <ellipse cx="1080" cy="610" rx="120" ry="72" transform="rotate(14 1080 610)"/>
+          <ellipse cx="1080" cy="610" rx="60" ry="34" transform="rotate(14 1080 610)"/>
+        </g>
+        <path d="M690 250 L930 238 L950 440 L700 462 Z" fill="none" stroke="#F0782F" stroke-width="3" stroke-dasharray="14 8"/>
+      </svg>
+    </div>
+
+    <div class="wrap hero-grid">
+      <div class="hero-content">
+        <p class="hero-locale">Land surveyors in Alexandria, Minnesota</p>
+        <h1 id="hero-title">
+          <span class="hero-line"><span>Know exactly where</span></span>
+          <span class="hero-line"><span>your land begins.</span></span>
+        </h1>
+        <p class="hero-sub">Boundary, ALTA/NSPS, topographic, and construction surveys for west central Minnesota. Family owned and in the field since 1982.</p>
+        <div class="hero-actions">
+          <a class="btn btn-flag" href="#contact">Request a survey</a>
+          <a class="btn btn-glass" href="tel:+13207624111">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Call (320) 762-4111
+          </a>
+        </div>
+      </div>
+
+      <aside class="readout" aria-label="Company at a glance">
+        <p class="readout-title"><span class="dot" aria-hidden="true"></span>Field readout</p>
+        <dl>
+          <dt>Base</dt><dd>Alexandria, MN</dd>
+          <dt>In the field since</dt><dd>1982</dd>
+          <dt>Surveys completed</dt><dd><span aria-hidden="true" data-count="11000">11,000+</span><span class="sr-only">11,000+</span></dd>
+          <dt>Licensed surveyors</dt><dd>2 on staff</dd>
+          <dt>Coverage</dt><dd>MN, ND &amp; SD</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section section-light services" id="services" aria-labelledby="services-title">
+    <svg class="contours" data-contours="light" aria-hidden="true"></svg>
+    <div class="services-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="services-title">Surveys for every stage of a property</h2>
+        <p>Residential, commercial-industrial, agricultural, and public work. Pick a survey type to see what it covers.</p>
+      </div>
+
+      <div class="services-layout">
+        <div class="service-tabs" role="tablist" aria-label="Survey types" aria-orientation="vertical">
+          <button class="service-tab" role="tab" id="tab-boundary" aria-controls="panel-boundary" aria-selected="true">Boundary survey <span class="tab-hint">Residential</span></button>
+          <button class="service-tab" role="tab" id="tab-alta" aria-controls="panel-alta" aria-selected="false" tabindex="-1">ALTA/NSPS land title <span class="tab-hint">Commercial</span></button>
+          <button class="service-tab" role="tab" id="tab-permit" aria-controls="panel-permit" aria-selected="false" tabindex="-1">Building permit survey <span class="tab-hint">Before you build</span></button>
+          <button class="service-tab" role="tab" id="tab-subdivision" aria-controls="panel-subdivision" aria-selected="false" tabindex="-1">Subdivision <span class="tab-hint">Split a parcel</span></button>
+          <button class="service-tab" role="tab" id="tab-staking" aria-controls="panel-staking" aria-selected="false" tabindex="-1">Construction staking <span class="tab-hint">On site</span></button>
+          <button class="service-tab" role="tab" id="tab-topo" aria-controls="panel-topo" aria-selected="false" tabindex="-1">Topographic survey <span class="tab-hint">Design &amp; drainage</span></button>
+          <button class="service-tab" role="tab" id="tab-ag" aria-controls="panel-ag" aria-selected="false" tabindex="-1">Agricultural &amp; rural <span class="tab-hint">Farmland</span></button>
+        </div>
+
+        <div class="panels">
+          <!-- Boundary -->
+          <article class="service-panel is-drawn" role="tabpanel" id="panel-boundary" aria-labelledby="tab-boundary" tabindex="0">
+            <div class="panel-grid">
+              <div>
+                <h3>Boundary survey</h3>
+                <p>We locate or set the corner monuments of your parcel and show the lines on a certified drawing, so fences, driveways, and additions go exactly where they belong.</p>
+                <ul class="panel-meta">
+                  <li><strong>Typical for</strong> buying land, fence disputes, lake lots</li>
+                  <li><strong>You receive</strong> a signed survey drawing and set monuments</li>
+                </ul>
+              </div>
+              <div class="plat" aria-hidden="true">
+                <svg viewBox="0 0 240 160">
+                  <path class="stroke-flag draw" pathLength="1" d="M42 34 L196 24 L206 128 L36 136 Z"/>
+                  <path class="stroke-soft" d="M50 44 L190 36"/>
+                  <text class="label" x="92" y="30">N 86°12' E</text>
+                  <text class="label" x="104" y="86">PARCEL</text>
+                  <circle class="mon pop" cx="42" cy="34" r="4.5"/>
+                  <circle class="mon pop" cx="196" cy="24" r="4.5"/>
+                  <circle class="mon pop" cx="206" cy="128" r="4.5"/>
+                  <circle class="mon pop" cx="36" cy="136" r="4.5"/>
+                </svg>
+              </div>
+            </div>
+            <div class="panel-cta"><a class="btn btn-flag" href="#contact" data-service="Boundary survey">Request a boundary survey</a></div>
+          </article>
+
+          <!-- ALTA -->
+          <article class="service-panel" role="tabpanel" id="panel-alta" aria-labelledby="tab-alta" tabindex="0">
+            <div class="panel-grid">
+              <div>
+                <h3>ALTA/NSPS land title survey</h3>
+                <p>A specialized boundary survey built for title insurance. It discloses every survey-related title issue so lenders, title attorneys, and buyers can make informed decisions about a piece of real estate.</p>
+                <ul class="panel-meta">
+                  <li><strong>Typical for</strong> commercial purchases and refinancing</li>
+                  <li><strong>Shows</strong> boundaries, improvements, easements, encroachments</li>
+                </ul>
+              </div>
+              <div class="plat" aria-hidden="true">
+                <svg viewBox="0 0 240 160">
+                  <path class="stroke draw" pathLength="1" d="M30 26 L210 26 L210 134 L30 134 Z"/>
+                  <path class="stroke-flag draw" pathLength="1" d="M78 56 L162 56 L162 108 L78 108 Z"/>
+                  <path class="stroke-soft" d="M30 118 L210 118"/>
+                  <text class="label" x="86" y="86">BUILDING</text>
+                  <text class="label" x="34" y="130">UTILITY EASEMENT</text>
+                  <path class="stroke pop" d="M196 40 L196 60 M196 40 L191 48 M196 40 L201 48"/>
+                  <text class="label pop" x="193" y="72">N</text>
+                </svg>
+              </div>
+            </div>
+            <div class="panel-cta"><a class="btn btn-flag" href="#contact" data-service="ALTA/NSPS land title survey">Request an ALTA survey</a></div>
+          </article>
+
+          <!-- Building permit -->
+          <article class="service-panel" role="tabpanel" id="panel-permit" aria-labelledby="tab-permit" tabindex="0">
+            <div class="panel-grid">
+              <div>
+                <h3>Building permit survey</h3>
+                <p>Shows the parcel boundary, topographic conditions, and existing and proposed improvements, so your structure gets built without encroachment, elevation, or density problems.</p>
+                <ul class="panel-meta">
+                  <li><strong>Typical for</strong> new homes, garages, lake cabins</li>
+                  <li><strong>Shows</strong> setbacks, elevations, proposed footprint</li>
+                </ul>
+              </div>
+              <div class="plat" aria-hidden="true">
+                <svg viewBox="0 0 240 160">
+                  <path class="stroke draw" pathLength="1" d="M28 22 L212 22 L212 138 L28 138 Z"/>
+                  <path class="stroke-flag draw" pathLength="1" d="M84 58 L170 58 L170 112 L84 112 Z"/>
+                  <path class="stroke-soft" d="M84 22 L84 58 M170 112 L212 112"/>
+                  <text class="label pop" x="88" y="44">30.0'</text>
+                  <text class="label pop" x="178" y="108">20.0'</text>
+                  <text class="label" x="104" y="90">PROPOSED</text>
+                </svg>
+              </div>
+            </div>
+            <div class="panel-cta"><a class="btn btn-flag" href="#contact" data-service="Building permit survey">Request a permit survey</a></div>
+          </article>
+
+          <!-- Subdivision -->
+          <article class="service-panel" role="tabpanel" id="panel-subdivision" aria-labelledby="tab-subdivision" tabindex="0">
+            <div class="panel-grid">
+              <div>
+                <h3>Subdivision survey</h3>
+                <p>Minor subdivisions of one or two lots often need only a boundary survey and a legal description of each portion, which an abstract company or attorney then uses to prepare and file the deeds. Larger plats are handled start to finish.</p>
+                <ul class="panel-meta">
+                  <li><strong>Typical for</strong> splitting family land, selling a lot</li>
+                  <li><strong>You receive</strong> new legal descriptions and monuments</li>
+                </ul>
+              </div>
+              <div class="plat" aria-hidden="true">
+                <svg viewBox="0 0 240 160">
+                  <path class="stroke draw" pathLength="1" d="M30 24 L210 24 L210 136 L30 136 Z"/>
+                  <path class="stroke-flag draw" pathLength="1" d="M118 24 L126 136"/>
+                  <text class="label" x="60" y="84">LOT 1</text>
+                  <text class="label" x="156" y="84">LOT 2</text>
+                  <circle class="mon pop" cx="118" cy="24" r="4.5"/>
+                  <circle class="mon pop" cx="126" cy="136" r="4.5"/>
+                </svg>
+              </div>
+            </div>
+            <div class="panel-cta"><a class="btn btn-flag" href="#contact" data-service="Subdivision survey">Request a subdivision survey</a></div>
+          </article>
+
+          <!-- Construction staking -->
+          <article class="service-panel" role="tabpanel" id="panel-staking" aria-labelledby="tab-staking" tabindex="0">
+            <div class="panel-grid">
+              <div>
+                <h3>Construction staking</h3>
+                <p>We put the design on the ground: staking residential homes, additions, and site improvements so your contractor builds to the approved plan and the right elevation.</p>
+                <ul class="panel-meta">
+                  <li><strong>Typical for</strong> new home foundations and site work</li>
+                  <li><strong>You receive</strong> offset stakes and elevation marks</li>
+                </ul>
+              </div>
+              <div class="plat" aria-hidden="true">
+                <svg viewBox="0 0 240 160">
+                  <path class="stroke-soft" d="M70 46 L170 46 L170 114 L70 114 Z"/>
+                  <path class="stroke draw" pathLength="1" d="M70 46 L170 46 L170 114 L70 114 Z"/>
+                  <path class="stroke-flag pop" d="M52 34 l8 8 m0 -8 l-8 8 M180 34 l8 8 m0 -8 l-8 8 M180 118 l8 8 m0 -8 l-8 8 M52 118 l8 8 m0 -8 l-8 8"/>
+                  <text class="label" x="92" y="84">FOUNDATION</text>
+                  <text class="label pop" x="36" y="30">10' OFFSET</text>
+                </svg>
+              </div>
+            </div>
+            <div class="panel-cta"><a class="btn btn-flag" href="#contact" data-service="Construction staking">Request staking</a></div>
+          </article>
+
+          <!-- Topographic -->
+          <article class="service-panel" role="tabpanel" id="panel-topo" aria-labelledby="tab-topo" tabindex="0">
+            <div class="panel-grid">
+              <div>
+                <h3>Topographic survey</h3>
+                <p>We map ground elevations, contours, and existing features so engineers and builders can design grading, drainage, and shoreland improvements with real numbers.</p>
+                <ul class="panel-meta">
+                  <li><strong>Typical for</strong> site design, drainage, shoreland lots</li>
+                  <li><strong>Shows</strong> contours, spot elevations, features</li>
+                </ul>
+              </div>
+              <div class="plat" aria-hidden="true">
+                <svg viewBox="0 0 240 160">
+                  <path class="stroke draw" pathLength="1" d="M20 120 C60 100 90 130 130 108 S200 96 224 110"/>
+                  <path class="stroke draw" pathLength="1" d="M20 96 C62 76 96 104 132 84 S196 70 224 84"/>
+                  <path class="stroke-flag draw" pathLength="1" d="M20 72 C64 50 100 78 136 60 S194 44 224 58"/>
+                  <path class="stroke draw" pathLength="1" d="M20 48 C66 26 104 52 140 36 S192 20 224 32"/>
+                  <text class="label pop" x="150" y="54">1,380'</text>
+                  <text class="label pop" x="28" y="136">SHORELINE</text>
+                </svg>
+              </div>
+            </div>
+            <div class="panel-cta"><a class="btn btn-flag" href="#contact" data-service="Topographic survey">Request a topographic survey</a></div>
+          </article>
+
+          <!-- Agricultural -->
+          <article class="service-panel" role="tabpanel" id="panel-ag" aria-labelledby="tab-ag" tabindex="0">
+            <div class="panel-grid">
+              <div>
+                <h3>Agricultural &amp; rural surveys</h3>
+                <p>Farmland and rural parcels described by section, township, and range. We retrace original government survey lines and set corners for sales, splits, and estate settlements.</p>
+                <ul class="panel-meta">
+                  <li><strong>Typical for</strong> farm sales, estate splits, rural building sites</li>
+                  <li><strong>Works from</strong> PLSS section and quarter-section corners</li>
+                </ul>
+              </div>
+              <div class="plat" aria-hidden="true">
+                <svg viewBox="0 0 240 160">
+                  <path class="stroke draw" pathLength="1" d="M40 20 L200 20 L200 140 L40 140 Z"/>
+                  <path class="stroke-soft" d="M120 20 L120 140 M40 80 L200 80"/>
+                  <path class="stroke-flag draw" pathLength="1" d="M120 80 L200 80 L200 140 L120 140 Z"/>
+                  <text class="label" x="70" y="54">NW 1/4</text>
+                  <text class="label" x="150" y="54">NE 1/4</text>
+                  <text class="label" x="70" y="114">SW 1/4</text>
+                  <text class="label" x="150" y="114">SE 1/4</text>
+                </svg>
+              </div>
+            </div>
+            <div class="panel-cta"><a class="btn btn-flag" href="#contact" data-service="Agricultural / rural survey">Request a rural survey</a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY NYBERG ============ -->
+  <section class="section why" id="why" aria-labelledby="why-title">
+    <div class="wrap why-grid">
+      <div>
+        <h2 id="why-title" class="sr-only">Why Nyberg Surveying</h2>
+        <p class="why-stat" aria-hidden="true">11,000+</p>
+        <p class="why-stat-label">surveys completed since 1982, and every one of them still works for you.</p>
+        <p class="why-body">Each survey adds to our local records and survey control. When we come out to your property, we're often starting from monuments and measurements we've already verified nearby, which keeps our work accurate and our pricing competitive.</p>
+        <div class="why-facts">
+          <div class="why-fact"><strong>Family owned</strong><span>Founded by Michael Nyberg, run today by his sons Brad and Eric.</span></div>
+          <div class="why-fact"><strong>2 licensed</strong><span>land surveyors, backed by experienced field technicians and office staff.</span></div>
+          <div class="why-fact"><strong>5.0 rating</strong><span>on Google reviews, and 5 out of 5 on Facebook.</span></div>
+        </div>
+      </div>
+      <figure class="cap-stage-wrap" style="margin:0">
+        <div class="cap-stage" id="cap-stage">
+          <svg class="cap-fallback" id="cap-fallback" viewBox="0 0 200 200" aria-hidden="true">
+            <defs><radialGradient id="brass" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#E3C98A"/><stop offset="0.6" stop-color="#B8934E"/><stop offset="1" stop-color="#7C5E2A"/></radialGradient></defs>
+            <circle cx="100" cy="100" r="86" fill="url(#brass)" stroke="#5E4620" stroke-width="3"/>
+            <circle cx="100" cy="100" r="60" fill="none" stroke="#6B5024" stroke-width="1.5"/>
+            <path d="M100 76 L118 110 H82 Z" fill="none" stroke="#4A3714" stroke-width="3"/>
+            <path d="M100 58 V142 M58 100 H142" stroke="#4A3714" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <figcaption class="cap-caption">A brass survey cap marks a verified corner for the next surveyor. Drag or hover to turn it.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ HISTORY ============ -->
+  <section class="section section-light history" id="history" aria-labelledby="history-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="history-title">Four decades on one traverse</h2>
+        <p>Three generations of measurements across west central Minnesota, one station at a time.</p>
+      </div>
+      <div class="traverse">
+        <svg class="traverse-svg" viewBox="0 0 1000 160" preserveAspectRatio="none" aria-hidden="true">
+          <path class="traverse-ghost" d="M125 110 L375 50 L625 95 L875 40"/>
+          <path class="traverse-path" pathLength="1" d="M125 110 L375 50 L625 95 L875 40"/>
+        </svg>
+        <span class="history-rail" aria-hidden="true"></span>
+        <ol class="stations">
+          <li class="station">
+            <span class="station-dot" aria-hidden="true"></span>
+            <div class="station-card">
+              <p class="station-year">1982</p>
+              <h3>Michael Nyberg opens the firm</h3>
+              <p>Nyberg Surveying starts serving Alexandria and the surrounding lakes area.</p>
+            </div>
+          </li>
+          <li class="station">
+            <span class="station-dot" aria-hidden="true"></span>
+            <div class="station-card">
+              <p class="station-year">1990s</p>
+              <h3>Brad and Eric join the crew</h3>
+              <p>Both sons work in the field while earning their land surveying degrees.</p>
+            </div>
+          </li>
+          <li class="station">
+            <span class="station-dot" aria-hidden="true"></span>
+            <div class="station-card">
+              <p class="station-year">Today</p>
+              <h3>The second generation owns it</h3>
+              <p>Brad and Eric lead two licensed surveyors and a seasoned field and office team.</p>
+            </div>
+          </li>
+          <li class="station">
+            <span class="station-dot" aria-hidden="true"></span>
+            <div class="station-card">
+              <p class="station-year">11,000+</p>
+              <h3>Surveys and counting</h3>
+              <p>Work across Minnesota and the eastern Dakotas, built on records we keep.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <svg class="contours" data-contours="dark" aria-hidden="true"></svg>
+    <div class="wrap contact-layout">
+      <div>
+        <div class="section-head" style="margin-bottom:0">
+          <h2 id="contact-title">Request a survey</h2>
+          <p>Tell us where the property is and what you need. We'll follow up with scheduling and a quote.</p>
+        </div>
+        <div class="contact-details">
+          <div class="contact-item">
+            <h3>Call the office</h3>
+            <a href="tel:+13207624111">(320) 762-4111</a>
+          </div>
+          <div class="contact-item">
+            <h3>Email</h3>
+            <a href="mailto:info@nybergsurveying.com">info@nybergsurveying.com</a>
+          </div>
+          <div class="contact-item">
+            <h3>Office</h3>
+            <p>509 22nd Ave E, Suite 101<br />Alexandria, MN 56308</p>
+            <a class="sub" href="https://www.google.com/maps/dir/?api=1&amp;destination=509+22nd+Ave+E+%23101+Alexandria+MN+56308" target="_blank" rel="noopener">Get directions</a>
+          </div>
+          <div class="contact-item">
+            <h3>Hours</h3>
+            <dl class="hours">
+              <dt>Monday to Friday</dt><dd>8:00 AM to 4:30 PM</dd>
+              <dt>Saturday &amp; Sunday</dt><dd>Closed</dd>
+            </dl>
+          </div>
+          <div class="contact-item">
+            <h3>Service area</h3>
+            <p>West central Minnesota<span class="sub">Surveys throughout Minnesota, North Dakota, and South Dakota</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="request">
+        <form id="request-form" novalidate>
+          <div class="request-head">
+            <h3>Survey request</h3>
+            <span>Fields marked <span aria-hidden="true">*</span> are required</span>
+          </div>
+          <div class="form-summary" id="form-summary" tabindex="-1" hidden>
+            <h4>Please fix the following:</h4>
+            <ul id="form-summary-list"></ul>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err" />
+              <span class="error" id="f-name-err" hidden></span>
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="f-phone-err" />
+              <span class="error" id="f-phone-err" hidden></span>
+            </div>
+            <div class="field field-wide">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" aria-describedby="f-email-err" />
+              <span class="error" id="f-email-err" hidden></span>
+            </div>
+            <div class="field field-wide">
+              <label for="f-property">Property address or parcel ID <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-property" name="property" type="text" required aria-describedby="f-property-help f-property-err" />
+              <span class="help" id="f-property-help">A legal description, parcel number, or nearest road and lake all help.</span>
+              <span class="error" id="f-property-err" hidden></span>
+            </div>
+            <div class="field">
+              <label for="f-type">Survey type <span class="req" aria-hidden="true">*</span></label>
+              <select id="f-type" name="type" required aria-describedby="f-type-err">
+                <option value="">Choose one</option>
+                <option>Boundary survey</option>
+                <option>ALTA/NSPS land title survey</option>
+                <option>Building permit survey</option>
+                <option>Subdivision survey</option>
+                <option>Construction staking</option>
+                <option>Topographic survey</option>
+                <option>Agricultural / rural survey</option>
+                <option>Not sure yet</option>
+              </select>
+              <span class="error" id="f-type-err" hidden></span>
+            </div>
+            <div class="field">
+              <label for="f-when">When do you need it?</label>
+              <select id="f-when" name="when">
+                <option>Within a month</option>
+                <option>As soon as possible</option>
+                <option>This season</option>
+                <option>Just planning ahead</option>
+              </select>
+            </div>
+            <div class="field field-wide">
+              <label for="f-notes">Anything else we should know?</label>
+              <textarea id="f-notes" name="notes" placeholder="Closing date, known corners, fence questions, lender requirements"></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-flag" type="submit">Send survey request</button>
+            <p class="form-note">Prefer to talk? Call <a href="tel:+13207624111">(320) 762-4111</a>.</p>
+          </div>
+        </form>
+
+        <div class="form-success" id="form-success" tabindex="-1" hidden>
+          <svg class="check" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="none" stroke="#F0782F" stroke-width="2.5"/><path d="M14 25 l7 7 l13 -15" fill="none" stroke="#F0782F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Your request is ready to send</h3>
+          <p>We've opened an email to info@nybergsurveying.com with your details filled in. If nothing opened, <a id="mailto-link" href="mailto:info@nybergsurveying.com">send it from here</a> or call (320) 762-4111.</p>
+          <button class="btn btn-glass" type="button" id="form-reset">Start a new request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER / TITLE BLOCK ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="title-block">
+      <div class="tb-cell"><span class="tb-label">Firm</span><span class="tb-firm">Nyberg Surveying, Inc.</span></div>
+      <div class="tb-cell"><span class="tb-label">Office</span><span class="tb-value">509 22nd Ave E, Suite 101<br />Alexandria, MN 56308</span></div>
+      <div class="tb-cell"><span class="tb-label">Phone</span><span class="tb-value"><a href="tel:+13207624111">(320) 762-4111</a></span></div>
+      <div class="tb-cell"><span class="tb-label">Email</span><span class="tb-value"><a href="mailto:info@nybergsurveying.com">info@nybergsurveying.com</a></span></div>
+      <div class="tb-cell"><span class="tb-label">Services</span><span class="tb-value">Boundary, ALTA/NSPS, topographic, subdivision, permit, staking</span></div>
+      <div class="tb-cell"><span class="tb-label">Coverage</span><span class="tb-value">Minnesota, North Dakota, South Dakota</span></div>
+      <div class="tb-cell"><span class="tb-label">Established</span><span class="tb-value">1982</span></div>
+      <div class="tb-cell"><span class="tb-label">Office hours</span><span class="tb-value">Mon to Fri, 8:00 AM to 4:30 PM</span></div>
+    </div>
+    <p class="footer-note">&copy; 2026 Nyberg Surveying, Inc. Redesign concept.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  root.classList.add("js");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
+  var easeOutCubic = function (t) { return 1 - Math.pow(1 - t, 3); };
+  var easeInOutCubic = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+
+  /* ---------- mobile menu ---------- */
+  var toggle = document.querySelector(".menu-toggle");
+  var menu = document.getElementById("mobile-menu");
+  function setMenu(open) {
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menu.hidden = !open;
+  }
+  toggle.addEventListener("click", function () { setMenu(menu.hidden); });
+  menu.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menu.hidden) { setMenu(false); toggle.focus(); } });
+
+  /* ---------- contour line backgrounds ---------- */
+  document.querySelectorAll("svg[data-contours]").forEach(function (svg) {
+    var dark = svg.getAttribute("data-contours") === "dark";
+    var W = 1600, H = 1000, n = 22;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+    var ns = "http://www.w3.org/2000/svg", frag = document.createDocumentFragment();
+    for (var i = 0; i < n; i++) {
+      var y0 = 30 + i * (H / n), d = "";
+      for (var x = 0; x <= W; x += 32) {
+        var y = y0 + 26 * Math.sin(x * 0.0036 + i * 0.42) + 14 * Math.sin(x * 0.0105 + i * 1.3) + 9 * Math.cos(x * 0.002 - i * 0.8);
+        d += (x === 0 ? "M" : "L") + x + " " + y.toFixed(1) + " ";
+      }
+      var p = document.createElementNS(ns, "path");
+      p.setAttribute("d", d);
+      p.setAttribute("fill", "none");
+      var major = i % 5 === 0;
+      p.setAttribute("stroke", dark ? (major ? "rgba(110,148,105,0.30)" : "rgba(110,148,105,0.14)") : (major ? "rgba(110,148,105,0.45)" : "rgba(110,148,105,0.22)"));
+      p.setAttribute("stroke-width", major ? "1.4" : "1");
+      frag.appendChild(p);
+    }
+    svg.appendChild(frag);
+  });
+
+  /* ---------- services tabs ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".service-tab"));
+  var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute("aria-controls")); });
+  panels.forEach(function (p, i) { p.hidden = i !== 0; });
+  function selectTab(idx, focus) {
+    tabs.forEach(function (t, i) {
+      var on = i === idx;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      panels[i].hidden = !on;
+      if (on) {
+        var panel = panels[i];
+        panel.classList.remove("is-drawn");
+        void panel.offsetWidth;
+        requestAnimationFrame(function () { panel.classList.add("is-drawn"); });
+      }
+    });
+    if (focus) tabs[idx].focus();
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () { selectTab(i, false); });
+    tab.addEventListener("keydown", function (e) {
+      var k = e.key, next = null;
+      if (k === "ArrowDown" || k === "ArrowRight") next = (i + 1) % tabs.length;
+      else if (k === "ArrowUp" || k === "ArrowLeft") next = (i - 1 + tabs.length) % tabs.length;
+      else if (k === "Home") next = 0;
+      else if (k === "End") next = tabs.length - 1;
+      if (next !== null) { e.preventDefault(); selectTab(next, true); }
+    });
+  });
+  // draw the first panel once it scrolls into view
+  var firstPanel = panels[0];
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    firstPanel.classList.remove("is-drawn");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { firstPanel.classList.add("is-drawn"); io.disconnect(); } });
+    }, { threshold: 0.35 });
+    io.observe(firstPanel);
+  }
+  // service CTA pre-selects the survey type in the form
+  document.querySelectorAll("[data-service]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var sel = document.getElementById("f-type");
+      Array.prototype.forEach.call(sel.options, function (o) { if (o.text === a.getAttribute("data-service")) sel.value = o.value || o.text; });
+    });
+  });
+
+  /* ---------- form ---------- */
+  var form = document.getElementById("request-form");
+  var summary = document.getElementById("form-summary");
+  var summaryList = document.getElementById("form-summary-list");
+  var success = document.getElementById("form-success");
+  var rules = [
+    { id: "f-name", test: function (v) { return v.trim().length > 1; }, msg: "Enter your full name." },
+    { id: "f-phone", test: function (v) { return v.replace(/\D/g, "").length >= 10; }, msg: "Enter a 10-digit phone number, for example (320) 555-0100." },
+    { id: "f-email", test: function (v) { return !v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }, msg: "Enter an email like name@example.com, or leave it blank." },
+    { id: "f-property", test: function (v) { return v.trim().length > 3; }, msg: "Tell us where the property is: an address, parcel ID, or nearest road." },
+    { id: "f-type", test: function (v) { return !!v; }, msg: "Choose a survey type, or pick \"Not sure yet\"." }
+  ];
+  function showError(rule, show) {
+    var input = document.getElementById(rule.id);
+    var err = document.getElementById(rule.id + "-err");
+    input.setAttribute("aria-invalid", show ? "true" : "false");
+    err.hidden = !show;
+    err.textContent = show ? rule.msg : "";
+  }
+  rules.forEach(function (rule) {
+    document.getElementById(rule.id).addEventListener("blur", function (e) {
+      if (e.target.value) showError(rule, !rule.test(e.target.value));
+    });
+  });
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var failed = rules.filter(function (r) { var ok = r.test(document.getElementById(r.id).value); showError(r, !ok); return !ok; });
+    summaryList.innerHTML = "";
+    if (failed.length) {
+      failed.forEach(function (r) {
+        var li = document.createElement("li"), a = document.createElement("a");
+        a.href = "#" + r.id; a.textContent = r.msg;
+        a.addEventListener("click", function (ev) { ev.preventDefault(); document.getElementById(r.id).focus(); });
+        li.appendChild(a); summaryList.appendChild(li);
+      });
+      summary.hidden = false;
+      summary.focus();
+      return;
+    }
+    summary.hidden = true;
+    var f = new FormData(form);
+    var body = [
+      "Name: " + f.get("name"),
+      "Phone: " + f.get("phone"),
+      "Email: " + (f.get("email") || "not provided"),
+      "Property: " + f.get("property"),
+      "Survey type: " + f.get("type"),
+      "Timing: " + f.get("when"),
+      "",
+      "Notes: " + (f.get("notes") || "none")
+    ].join("\n");
+    var href = "mailto:info@nybergsurveying.com?subject=" + encodeURIComponent("Survey request: " + f.get("type")) + "&body=" + encodeURIComponent(body);
+    document.getElementById("mailto-link").href = href;
+    form.hidden = true;
+    success.hidden = false;
+    success.focus();
+    try { window.location.href = href; } catch (err) {}
+  });
+  document.getElementById("form-reset").addEventListener("click", function () {
+    form.reset();
+    rules.forEach(function (r) { showError(r, false); });
+    success.hidden = true;
+    form.hidden = false;
+    document.getElementById("f-name").focus();
+  });
+
+  /* ---------- shared terrain height function ---------- */
+  function heightAt(x, y) {
+    var h = 0;
+    h += 0.58 * Math.exp(-(((x - 0.7) * (x - 0.7)) + ((y - 0.5) * (y - 0.5))) / 1.1);
+    h += 0.38 * Math.exp(-(((x + 1.7) * (x + 1.7)) + ((y - 0.95) * (y - 0.95))) / 0.7);
+    h += 0.26 * Math.exp(-(((x + 0.2) * (x + 0.2)) + ((y + 1.35) * (y + 1.35))) / 0.9);
+    h += 0.055 * Math.sin(x * 2.3 + y * 1.1) + 0.045 * Math.cos(x * 1.3 - y * 2.7);
+    h -= 0.46 * Math.exp(-(((x + 1.05) * (x + 1.05)) + ((y + 0.25) * (y + 0.25))) / 0.55);
+    return h;
+  }
+
+  var hasThree = typeof THREE !== "undefined";
+  function makeRenderer() {
+    try {
+      var r = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+      if (!r.getContext()) return null;
+      r.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+      return r;
+    } catch (e) { return null; }
+  }
+
+  /* ---------- HERO: 3D topographic terrain ---------- */
+  (function heroTerrain() {
+    if (!hasThree) return;
+    var host = document.getElementById("terrain");
+    var renderer = makeRenderer();
+    if (!renderer) return;
+    renderer.domElement.setAttribute("aria-hidden", "true");
+    host.appendChild(renderer.domElement);
+    document.getElementById("terrain-fallback").style.display = "none";
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(36, 1, 0.1, 60);
+    var world = new THREE.Group();
+    world.rotation.x = -Math.PI / 2;
+    scene.add(world);
+    var lift = new THREE.Group();
+    world.add(lift);
+
+    var W = 6.4, H = 4.2;
+    var geo = new THREE.PlaneGeometry(W, H, 200, 132);
+    var pos = geo.attributes.position;
+    for (var i = 0; i < pos.count; i++) pos.setZ(i, heightAt(pos.getX(i), pos.getY(i)));
+    geo.computeVertexNormals();
+
+    var terrainMat = new THREE.ShaderMaterial({
+      transparent: true,
+      extensions: { derivatives: true },
+      uniforms: {
+        uLow: { value: new THREE.Color(0x1d2e35) },
+        uHigh: { value: new THREE.Color(0x35493f) },
+        uMinor: { value: new THREE.Color(0x6e9469) },
+        uMajor: { value: new THREE.Color(0xb3cba9) }
+      },
+      vertexShader: [
+        "varying float vH;",
+        "varying vec2 vUv;",
+        "varying vec3 vWorld;",
+        "void main() {",
+        "  vH = position.z;",
+        "  vUv = uv;",
+        "  vec4 w = modelMatrix * vec4(position, 1.0);",
+        "  vWorld = w.xyz;",
+        "  gl_Position = projectionMatrix * viewMatrix * w;",
+        "}"
+      ].join("\n"),
+      fragmentShader: [
+        "uniform vec3 uLow; uniform vec3 uHigh; uniform vec3 uMinor; uniform vec3 uMajor;",
+        "varying float vH; varying vec2 vUv; varying vec3 vWorld;",
+        "float contour(float v) { float f = fract(v); float w = fwidth(v); return 1.0 - smoothstep(0.0, w * 1.3, min(f, 1.0 - f)); }",
+        "void main() {",
+        "  vec3 n = normalize(cross(dFdx(vWorld), dFdy(vWorld)));",
+        "  if (n.y < 0.0) n = -n;",
+        "  float diff = clamp(dot(n, normalize(vec3(-0.45, 0.85, 0.35))), 0.0, 1.0);",
+        "  float t = clamp((vH + 0.35) / 0.95, 0.0, 1.0);",
+        "  vec3 col = mix(uLow, uHigh, t) * (0.55 + 0.65 * diff);",
+        "  col = mix(col, uMinor, contour(vH * 22.0) * 0.5);",
+        "  col = mix(col, uMajor, contour(vH * 4.4) * 0.8);",
+        "  float ex = smoothstep(0.0, 0.2, min(vUv.x, 1.0 - vUv.x));",
+        "  float ey = smoothstep(0.0, 0.24, min(vUv.y, 1.0 - vUv.y));",
+        "  gl_FragColor = vec4(col, ex * ey);",
+        "}"
+      ].join("\n")
+    });
+    lift.add(new THREE.Mesh(geo, terrainMat));
+
+    // lake
+    var water = new THREE.Mesh(
+      new THREE.CircleGeometry(1.05, 64),
+      new THREE.MeshBasicMaterial({ color: 0x4c6b78, transparent: true, opacity: 0.78, depthWrite: false })
+    );
+    water.position.set(-1.05, -0.25, -0.13);
+    lift.add(water);
+
+    // parcel boundary (flagging-orange tube that draws itself)
+    var FLAG = 0xf0782f;
+    var corners = [[-0.08, -0.15], [1.45, -0.3], [1.6, 1.2], [0.0, 1.3]];
+    var pts = [];
+    for (var c = 0; c < 4; c++) {
+      var a = corners[c], b = corners[(c + 1) % 4];
+      for (var s = 0; s < 40; s++) {
+        var t = s / 40, x = a[0] + (b[0] - a[0]) * t, y = a[1] + (b[1] - a[1]) * t;
+        pts.push(new THREE.Vector3(x, y, heightAt(x, y) + 0.018));
+      }
+    }
+    var curve = new THREE.CatmullRomCurve3(pts, true, "catmullrom", 0.1);
+    var TUBE_SEG = 480, RAD_SEG = 6;
+    var tubeGeo = new THREE.TubeGeometry(curve, TUBE_SEG, 0.017, RAD_SEG, true);
+    var tube = new THREE.Mesh(tubeGeo, new THREE.MeshBasicMaterial({ color: FLAG }));
+    var tubeTotal = tubeGeo.index.count;
+    tubeGeo.setDrawRange(0, 0);
+    lift.add(tube);
+
+    // corner monuments (iron pins)
+    var monGeo = new THREE.CylinderGeometry(0.035, 0.035, 0.09, 16);
+    var monMat = new THREE.MeshBasicMaterial({ color: FLAG });
+    var monuments = corners.map(function (cn) {
+      var m = new THREE.Mesh(monGeo, monMat);
+      m.rotation.x = Math.PI / 2;
+      m.position.set(cn[0], cn[1], heightAt(cn[0], cn[1]) + 0.045);
+      m.scale.setScalar(0.001);
+      lift.add(m);
+      return m;
+    });
+
+    // survey stake with flag on the hilltop + pulsing ring
+    var sx = 0.72, sy = 0.52, sh = heightAt(sx, sy);
+    var stake = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.36, 10), new THREE.MeshBasicMaterial({ color: 0xe9eeea }));
+    stake.rotation.x = Math.PI / 2;
+    stake.position.set(sx, sy, sh + 0.18);
+    lift.add(stake);
+    var flag = new THREE.Mesh(new THREE.PlaneGeometry(0.13, 0.075), new THREE.MeshBasicMaterial({ color: FLAG, side: THREE.DoubleSide }));
+    flag.rotation.x = Math.PI / 2;
+    flag.position.set(sx + 0.066, sy, sh + 0.32);
+    lift.add(flag);
+    var ringMat = new THREE.MeshBasicMaterial({ color: FLAG, transparent: true, opacity: 0 });
+    var ring = new THREE.Mesh(new THREE.RingGeometry(0.1, 0.118, 48), ringMat);
+    ring.position.set(sx, sy, sh + 0.01);
+    lift.add(ring);
+
+    var camStart = new THREE.Vector3(0.3, 7.2, 1.0);
+    var camEnd = new THREE.Vector3(0.1, 2.9, 5.3);
+    var look = new THREE.Vector3(0.4, -0.15, 0.6);
+    var sizeW = 1, sizeH = 1;
+
+    function resize() {
+      sizeW = host.clientWidth || 1; sizeH = host.clientHeight || 1;
+      renderer.setSize(sizeW, sizeH, false);
+      camera.aspect = sizeW / sizeH;
+      var portrait = camera.aspect < 0.9;
+      camera.fov = portrait ? 40 : 36;
+      camera.updateProjectionMatrix();
+      world.position.x = camera.aspect > 1.25 ? 0.95 : -0.4;
+      look.set(portrait ? 0.35 : 0.4, portrait ? 0.35 : 0.3, portrait ? 0.2 : 0.6);
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    var mx = 0, my = 0, tmx = 0, tmy = 0;
+    window.addEventListener("pointermove", function (e) {
+      tmx = (e.clientX / window.innerWidth - 0.5) * 2;
+      tmy = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    function applyState(rise, draw, camT, spin, scrollP, time) {
+      lift.scale.z = Math.max(rise, 0.001);
+      water.material.opacity = 0.78 * clamp((rise - 0.55) / 0.45, 0, 1);
+      var count = Math.floor(tubeTotal * draw / 3) * 3;
+      tubeGeo.setDrawRange(0, count);
+      monuments.forEach(function (m, k) {
+        var appear = clamp((draw - k / 4 - 0.01) / 0.08, 0, 1);
+        m.scale.setScalar(Math.max(easeOutCubic(appear), 0.001));
+      });
+      if (draw >= 1 && time !== null) {
+        var ph = (time % 2.4) / 2.4;
+        ring.scale.setScalar(1 + ph * 1.6);
+        ringMat.opacity = 0.85 * (1 - ph);
+      } else if (draw >= 1) {
+        ring.scale.setScalar(1.4); ringMat.opacity = 0.5;
+      }
+      world.rotation.z = -0.35 + spin + scrollP * 0.55;
+      camera.position.lerpVectors(camStart, camEnd, camT);
+      camera.position.y += scrollP * 1.1;
+      camera.position.x += mx * 0.35;
+      camera.position.z += my * 0.15;
+      camera.lookAt(look);
+      renderer.render(scene, camera);
+    }
+
+    if (reduceMotion) {
+      var still = function () { applyState(1, 1, 1, 0, 0, null); };
+      still();
+      window.addEventListener("resize", still);
+      return;
+    }
+
+    var start = performance.now(), visible = true, spin = 0, last = start;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) requestAnimationFrame(loop); }, { threshold: 0 }).observe(host);
+    }
+    function loop(now) {
+      if (!visible || document.hidden) { last = now; return; }
+      var t = (now - start) / 1000, dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      var rise = easeOutCubic(clamp((t - 0.2) / 2.1, 0, 1));
+      var camT = easeInOutCubic(clamp((t - 0.1) / 2.4, 0, 1));
+      var draw = easeInOutCubic(clamp((t - 1.9) / 1.8, 0, 1));
+      spin = Math.sin(t * 0.12) * 0.16;
+      mx += (tmx - mx) * 0.04; my += (tmy - my) * 0.04;
+      var scrollP = clamp(window.scrollY / (host.clientHeight || 1), 0, 1);
+      applyState(rise, draw, camT, spin, scrollP, t);
+      requestAnimationFrame(loop);
+    }
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) requestAnimationFrame(loop); });
+    requestAnimationFrame(loop);
+  })();
+
+  /* ---------- WHY: 3D brass survey cap ---------- */
+  (function surveyCap() {
+    if (!hasThree) return;
+    var stage = document.getElementById("cap-stage");
+    var renderer = makeRenderer();
+    if (!renderer) return;
+    renderer.domElement.setAttribute("aria-hidden", "true");
+    stage.appendChild(renderer.domElement);
+    document.getElementById("cap-fallback").style.display = "none";
+
+    // engrave the cap face on a 2D canvas
+    var S = 1024, tex = document.createElement("canvas");
+    tex.width = tex.height = S;
+    var g = tex.getContext("2d");
+    var grad = g.createRadialGradient(S * 0.42, S * 0.38, S * 0.05, S / 2, S / 2, S * 0.5);
+    grad.addColorStop(0, "#C9AC6C"); grad.addColorStop(0.55, "#A5823F"); grad.addColorStop(1, "#6E5222");
+    g.fillStyle = grad; g.fillRect(0, 0, S, S);
+    g.strokeStyle = "rgba(74,55,20,0.9)";
+    g.lineWidth = 10; g.beginPath(); g.arc(S / 2, S / 2, S * 0.47, 0, Math.PI * 2); g.stroke();
+    g.lineWidth = 5; g.beginPath(); g.arc(S / 2, S / 2, S * 0.3, 0, Math.PI * 2); g.stroke();
+    // top arc reads clockwise with glyph tops facing out; bottom arc reads
+    // counter-clockwise with glyph tops facing the center, so both read left to right
+    function arcText(str, radius, onBottom) {
+      g.save(); g.translate(S / 2, S / 2);
+      g.font = "700 50px Archivo, Arial, sans-serif";
+      g.fillStyle = "rgba(48,34,10,0.95)";
+      g.textAlign = "center"; g.textBaseline = "middle";
+      var chars = str.split(""), step = 0.112, half = step * (chars.length - 1) / 2;
+      chars.forEach(function (ch, idx) {
+        g.save();
+        if (onBottom) { g.rotate(half - step * idx); g.translate(0, radius); }
+        else { g.rotate(-half + step * idx); g.translate(0, -radius); }
+        g.fillText(ch, 0, 0);
+        g.restore();
+      });
+      g.restore();
+    }
+    arcText("NYBERG SURVEYING INC", S * 0.385, false);
+    arcText("ALEXANDRIA MINNESOTA", S * 0.385, true);
+    g.save(); g.translate(S / 2, S / 2);
+    g.strokeStyle = "rgba(60,44,14,0.95)"; g.lineWidth = 9;
+    g.beginPath(); g.moveTo(0, -120); g.lineTo(104, 62); g.lineTo(-104, 62); g.closePath(); g.stroke();
+    g.lineWidth = 5;
+    g.beginPath(); g.moveTo(0, -210); g.lineTo(0, 210); g.moveTo(-210, 0); g.lineTo(210, 0); g.stroke();
+    g.fillStyle = "rgba(60,44,14,0.92)"; g.font = "700 40px Archivo, Arial, sans-serif"; g.textAlign = "center";
+    g.fillText("SURVEY MARKER", 0, 150);
+    g.fillText("EST. 1982", 0, -150);
+    g.restore();
+    var faceTex = new THREE.CanvasTexture(tex);
+    faceTex.anisotropy = 4;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(32, 1, 0.1, 30);
+    camera.position.set(0, 0, 5.2);
+    var cap = new THREE.Group();
+    var brass = new THREE.MeshStandardMaterial({ color: 0xb8934e, metalness: 0.75, roughness: 0.38 });
+    var face = new THREE.Mesh(new THREE.CircleGeometry(1, 96), new THREE.MeshStandardMaterial({ map: faceTex, bumpMap: faceTex, bumpScale: 0.012, metalness: 0.3, roughness: 0.55 }));
+    cap.add(face);
+    var side = new THREE.Mesh(new THREE.CylinderGeometry(1, 1.02, 0.16, 96, 1, true), brass);
+    side.rotation.x = Math.PI / 2; side.position.z = -0.08;
+    cap.add(side);
+    var rim = new THREE.Mesh(new THREE.TorusGeometry(1, 0.035, 16, 96), brass);
+    cap.add(rim);
+    var stem = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 1.4, 32), new THREE.MeshStandardMaterial({ color: 0x55605c, metalness: 0.6, roughness: 0.55 }));
+    stem.rotation.x = Math.PI / 2; stem.position.z = -0.85;
+    cap.add(stem);
+    scene.add(cap);
+    scene.add(new THREE.AmbientLight(0x8fa3a0, 0.45));
+    var key = new THREE.DirectionalLight(0xfff0d6, 0.85); key.position.set(2.5, 3, 4); scene.add(key);
+    var fill = new THREE.PointLight(0x6e9469, 0.9, 20); fill.position.set(-3, -2, 3); scene.add(fill);
+    var warm = new THREE.PointLight(0xf0782f, 0.6, 20); warm.position.set(3, -2.5, 2); scene.add(warm);
+
+    function resize() { var s = stage.clientWidth || 1; renderer.setSize(s, s, false); }
+    resize(); window.addEventListener("resize", resize);
+
+    var rx = -0.32, ry = 0.38, trx = rx, try_ = ry, dragging = false, px = 0, py = 0;
+    function render() { cap.rotation.x = rx; cap.rotation.y = ry; renderer.render(scene, camera); }
+    if (reduceMotion) { render(); window.addEventListener("resize", render); return; }
+
+    stage.addEventListener("pointerdown", function (e) { dragging = true; px = e.clientX; py = e.clientY; stage.setPointerCapture(e.pointerId); });
+    stage.addEventListener("pointerup", function () { dragging = false; });
+    stage.addEventListener("pointercancel", function () { dragging = false; });
+    stage.addEventListener("pointermove", function (e) {
+      var r = stage.getBoundingClientRect();
+      if (dragging) {
+        try_ += (e.clientX - px) * 0.01; trx += (e.clientY - py) * 0.01;
+        px = e.clientX; py = e.clientY;
+      } else if (e.pointerType === "mouse") {
+        try_ = ((e.clientX - r.left) / r.width - 0.5) * 1.1;
+        trx = ((e.clientY - r.top) / r.height - 0.5) * 0.9 - 0.2;
+      }
+    });
+    stage.addEventListener("pointerleave", function () { if (!dragging) { trx = -0.32; } });
+    stage.style.touchAction = "pan-y";
+    stage.style.cursor = "grab";
+
+    var visible = false, t0 = performance.now();
+    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) requestAnimationFrame(loop); }, { threshold: 0 }).observe(stage);
+    function loop(now) {
+      if (!visible) return;
+      var t = (now - t0) / 1000;
+      var idle = dragging ? 0 : Math.sin(t * 0.5) * 0.12;
+      rx += (trx - rx) * 0.07;
+      ry += (try_ + idle - ry) * 0.07;
+      render();
+      requestAnimationFrame(loop);
+    }
+  })();
+
+  /* ---------- GSAP choreography ---------- */
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+  gsap.registerPlugin(ScrollTrigger);
+  var mm = gsap.matchMedia();
+
+  mm.add("(prefers-reduced-motion: no-preference)", function () {
+    // hero load sequence, synced to the terrain rising
+    var intro = gsap.timeline({ defaults: { ease: "power4.out" } });
+    intro
+      .from(".hero-locale", { opacity: 0, y: 12, duration: 0.7 }, 0.3)
+      .from(".hero-line > span", { yPercent: 115, duration: 1.1, stagger: 0.12 }, 0.4)
+      .from(".hero-sub", { opacity: 0, y: 14, duration: 0.8, ease: "power2.out" }, 0.95)
+      .from(".hero-actions", { opacity: 0, y: 14, duration: 0.8, ease: "power2.out" }, 1.1)
+      .from(".readout", { opacity: 0, y: 24, duration: 1, ease: "power3.out" }, 2.2);
+    var counter = document.querySelector("[data-count]");
+    var cv = { v: 0 };
+    intro.fromTo(cv, { v: 0 }, {
+      v: 11000, duration: 1.6, ease: "power2.out",
+      onUpdate: function () { counter.textContent = Math.round(cv.v).toLocaleString("en-US") + "+"; }
+    }, 2.3);
+
+    // hero copy drifts slower than the page as you leave it
+    gsap.to(".hero-content", { yPercent: -14, opacity: 0.35, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    gsap.to(".readout", { yPercent: -30, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+
+    // big stat settles into place as the Why section arrives
+    gsap.from(".why-stat", { yPercent: 18, opacity: 0.2, ease: "none", scrollTrigger: { trigger: ".why", start: "top 85%", end: "top 35%", scrub: 0.5 } });
+  });
+
+  // history traverse: pinned, line draws station to station (desktop)
+  mm.add("(min-width: 901px) and (prefers-reduced-motion: no-preference)", function () {
+    var path = document.querySelector(".traverse-path");
+    var stations = gsap.utils.toArray(".station");
+    var tl = gsap.timeline({
+      scrollTrigger: { trigger: ".history", start: "top top", end: "+=140%", scrub: 0.6, pin: true, anticipatePin: 1 }
+    });
+    tl.fromTo(path, { strokeDashoffset: 1 }, { strokeDashoffset: 0, ease: "none", duration: 1 }, 0);
+    stations.forEach(function (st, i) {
+      var at = Math.max(0, i / 3 - 0.03);
+      tl.fromTo(st.querySelector(".station-dot"), { scale: 0.3, opacity: 0.3 }, { scale: 1, opacity: 1, duration: 0.06, ease: "back.out(3)" }, at);
+      tl.fromTo(st.querySelector(".station-card"), { opacity: 0.2, y: 22 }, { opacity: 1, y: 0, duration: 0.14, ease: "power2.out" }, at);
+    });
+    tl.to({}, { duration: 0.15 });
+  });
+
+  // history traverse: vertical rail on small screens
+  mm.add("(max-width: 900px) and (prefers-reduced-motion: no-preference)", function () {
+    gsap.fromTo(".history-rail", { scaleY: 0 }, { scaleY: 1, ease: "none", scrollTrigger: { trigger: ".stations", start: "top 75%", end: "bottom 55%", scrub: 0.4 } });
+  });
+})();
+</script>
+</body>
+</html>

@@ -622,7 +622,7 @@
         mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
       });
 
-      fallback.hidden = true;
+      fallback.style.display = "none";
 
       if (prefersReduced) {
         group.rotation.set(-0.3, 0.6, 0);
@@ -639,7 +639,7 @@
       }
       tick();
     } catch (err) {
-      fallback.hidden = false;
+      fallback.style.display = "";
       if (canvas) canvas.style.display = "none";
     }
   })();
