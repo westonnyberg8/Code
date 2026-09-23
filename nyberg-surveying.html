@@ -442,6 +442,80 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   }
+
+  /* ================= SUBDIVISION DESIGN (Sailor Crossing plat) ================= */
+  .subdiv {
+    position: relative; overflow: hidden; background: var(--ink); color: var(--on-dark);
+    min-height: 100svh; display: flex; align-items: center;
+    padding-block: calc(env(safe-area-inset-top, 0px) + 6rem) 2.5rem;
+  }
+  .subdiv-layout { position: relative; display: grid; grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr); gap: var(--s4); align-items: center; }
+  .subdiv-lead { color: var(--flag); font-weight: 650; font-size: 0.98rem; margin-bottom: var(--s1); }
+  .subdiv h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
+  .subdiv-text { color: var(--on-dark-muted); margin-top: var(--s2); font-size: 1.05rem; }
+  .subdiv-readout {
+    margin-top: var(--s3);
+    background: var(--glass-dark);
+    border: 1px solid var(--glass-dark-border);
+    border-radius: var(--radius-lg);
+    padding: var(--s3);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    backdrop-filter: blur(16px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .ro-state { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.3rem; font-size: 0.85rem; font-weight: 650; color: var(--on-dark-muted); }
+  .ro-state .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--flag); box-shadow: 0 0 0 4px rgba(240, 120, 47, 0.2); }
+  .ro-lot { margin: 0; font-stretch: 115%; font-weight: 700; font-size: 1.5rem; line-height: 1.15; }
+  .ro-area { margin: 0.2rem 0 var(--s2); color: var(--flag); font-weight: 650; font-size: 1.05rem; }
+  .ro-bar { height: 6px; border-radius: 6px; background: rgba(150, 180, 176, 0.2); overflow: hidden; }
+  .ro-bar span { display: block; height: 100%; background: var(--flag); transform-origin: left center; transition: transform 350ms var(--ease-out); }
+  .ro-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); margin: var(--s2) 0 0; }
+  .ro-stats dt { font-size: 0.82rem; color: var(--on-dark-muted); }
+  .ro-stats dd { margin: 0; font-weight: 650; }
+  .subdiv-cta { margin-top: var(--s3); }
+  .plat-sheet {
+    margin: 0; background: var(--paper-2); border-radius: 14px;
+    padding: clamp(0.5rem, 1.2vw, 1rem);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.6);
+  }
+  .plat-sheet svg { display: block; width: 100%; height: auto; max-height: calc(100svh - 12rem); }
+  .plat-sheet figcaption { color: var(--on-light-muted); font-size: 0.82rem; padding: 0.5rem 0.25rem 0; }
+  .plat-lot path { fill: rgba(110, 148, 105, 0.13); stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 0.55s var(--ease-out), fill 0.45s ease, stroke 0.3s ease, stroke-width 0.3s ease; }
+  .plat-lot.is-outlot path { fill: url(#plat-hatch); }
+  .plat-lot text { font: 700 17px "Archivo", Arial, sans-serif; fill: var(--ink); text-anchor: middle; dominant-baseline: central; transition: opacity 0.3s ease 0.2s, fill 0.3s ease; }
+  .plat-lot.is-outlot text { font-size: 12px; letter-spacing: 0.06em; fill: var(--on-light-muted); }
+  .plat-anim .plat-lot:not(.is-set) path { stroke-dashoffset: 1; fill: rgba(110, 148, 105, 0); }
+  .plat-anim .plat-lot:not(.is-set) text { opacity: 0; }
+  .plat-anim .plat-lot.is-current path { fill: rgba(240, 120, 47, 0.26); stroke: var(--flag-ink); stroke-width: 2.4; }
+  .plat-anim .plat-lot.is-current text { fill: var(--flag-ink); }
+  .plat-road-edge { fill: var(--paper-2); stroke: var(--ink); stroke-width: 2.6; }
+  .plat-road-fill { fill: var(--paper-2); stroke: none; }
+  .plat-boundary { fill: none; stroke: var(--ink); stroke-width: 3.4; stroke-linejoin: round; }
+  .plat-mon { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.6; transform-box: fill-box; transform-origin: center; transition: transform 0.35s var(--ease-out) 0.25s; }
+  .plat-anim .plat-mon:not(.is-set) { transform: scale(0); }
+  .plat-roadname { font: 600 13px "Archivo", Arial, sans-serif; letter-spacing: 0.1em; fill: var(--on-light-muted); text-anchor: middle; dominant-baseline: central; }
+  .plat-context { font: 500 12px "Archivo", Arial, sans-serif; letter-spacing: 0.08em; fill: #9AA8A2; }
+  .plat-title { font: 800 30px "Archivo", Arial, sans-serif; font-stretch: 118%; fill: var(--ink); }
+  .plat-meta { font: 500 12.5px "Archivo", Arial, sans-serif; fill: var(--on-light-muted); }
+  @media (max-width: 900px) {
+    .subdiv { padding-block: calc(env(safe-area-inset-top, 0px) + 5.5rem) 1rem; }
+    .subdiv-layout { grid-template-columns: minmax(0, 1fr); gap: var(--s2); }
+    .subdiv-copy { display: contents; }
+    .subdiv-head { order: 1; }
+    .plat-sheet { order: 2; }
+    .subdiv-readout { order: 3; margin-top: 0; padding: var(--s2); }
+    .subdiv-cta { display: none; }
+    .ro-lot { font-size: 1.15rem; }
+    .ro-area { margin-bottom: 0.6rem; }
+    .ro-stats { margin-top: 0.6rem; }
+  }
+  @media (max-width: 640px) {
+    .subdiv-text, .ro-stats { display: none; }
+    .plat-lot text { font-size: 28px; }
+    .plat-lot.is-outlot text { font-size: 18px; }
+    .plat-roadname, .plat-context, .plat-meta { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -744,6 +818,38 @@
           </article>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ SUBDIVISION DESIGN ============ -->
+  <section class="subdiv" id="subdivision-design" aria-labelledby="subdiv-title">
+    <svg class="contours" data-contours="dark" aria-hidden="true"></svg>
+    <div class="wrap subdiv-layout">
+      <div class="subdiv-copy">
+        <div class="subdiv-head">
+          <p class="subdiv-lead">Subdivision work</p>
+          <h2 id="subdiv-title">Subdivision design</h2>
+          <p class="subdiv-text">We lay out the lots, blocks, roads, and outlots, then set every corner in the field. Scroll to watch Sailor Crossing come together, starting from Lot 1, Block One.</p>
+        </div>
+        <div class="subdiv-readout">
+          <p class="ro-state"><span class="dot" aria-hidden="true"></span><span id="ro-state">Plat complete</span></p>
+          <p class="ro-lot" id="ro-lot">Sailor Crossing</p>
+          <p class="ro-area" id="ro-area">44 lots, 2 outlots, 36.97 acres</p>
+          <div class="ro-bar" aria-hidden="true"><span id="ro-bar"></span></div>
+          <dl class="ro-stats">
+            <div><dt>Parcels set</dt><dd id="ro-count">46 of 46</dd></div>
+            <div><dt>Lot area set</dt><dd id="ro-acres">30.97 acres</dd></div>
+          </dl>
+        </div>
+        <div class="subdiv-cta"><a class="btn btn-flag" href="#contact" data-service="Subdivision survey">Plan a subdivision</a></div>
+      </div>
+      <figure class="plat-sheet">
+        <svg id="plat-svg" viewBox="470 290 1000 860" role="img" aria-labelledby="plat-svg-title plat-svg-desc">
+          <title id="plat-svg-title">Sailor Crossing subdivision plat</title>
+          <desc id="plat-svg-desc">A 36.97 acre subdivision in Alexandria, Minnesota, divided into four blocks with 44 lots and two outlots, served by Pike Road, Sailor Way, Sailor Drive, and Sailor Court.</desc>
+        </svg>
+        <figcaption>Sailor Crossing, Alexandria, MN. Recorded plat by Nyberg Surveying, filed June 11, 2007. Lot lines simplified for illustration.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -1447,6 +1553,263 @@
     }
   })();
 
+  /* ---------- SUBDIVISION DESIGN: Sailor Crossing plat, set lot by lot ---------- */
+  var plat = (function buildPlat() {
+    var svg = document.getElementById("plat-svg");
+    if (!svg) return null;
+    var NS = "http://www.w3.org/2000/svg";
+    function el(tag, attrs, parent, text) {
+      var e = document.createElementNS(NS, tag);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      if (text != null) e.textContent = text;
+      if (parent) parent.appendChild(e);
+      return e;
+    }
+    function makePoly(pts) {
+      var n = pts.length, cum = [0];
+      for (var i = 0; i < n; i++) { var a = pts[i], b = pts[(i + 1) % n]; cum.push(cum[i] + Math.hypot(b[0] - a[0], b[1] - a[1])); }
+      return { pts: pts, n: n, cum: cum, L: cum[n] };
+    }
+    function roundedRect(x0, y0, x1, y1, r, seg) {
+      var pts = [];
+      function arc(cx, cy, rad, a0, a1) {
+        for (var s = 0; s <= seg; s++) { var a = a0 + (a1 - a0) * s / seg; pts.push([cx + rad * Math.cos(a), cy + rad * Math.sin(a)]); }
+      }
+      arc(x0 + r[0], y0 + r[0], r[0], Math.PI, 1.5 * Math.PI);
+      arc(x1 - r[1], y0 + r[1], r[1], 1.5 * Math.PI, 2 * Math.PI);
+      arc(x1 - r[2], y1 - r[2], r[2], 0, 0.5 * Math.PI);
+      arc(x0 + r[3], y1 - r[3], r[3], 0.5 * Math.PI, Math.PI);
+      return pts;
+    }
+    // first crossing of a ray with a closed polyline, with its arc-length position
+    function hit(P, o, d) {
+      var best = null;
+      for (var i = 0; i < P.n; i++) {
+        var a = P.pts[i], b = P.pts[(i + 1) % P.n], ex = b[0] - a[0], ey = b[1] - a[1];
+        var den = d[0] * ey - d[1] * ex;
+        if (Math.abs(den) < 1e-9) continue;
+        var wx = a[0] - o[0], wy = a[1] - o[1];
+        var t = (wx * ey - wy * ex) / den, u = (wx * d[1] - wy * d[0]) / den;
+        if (t > 1e-6 && u >= 0 && u <= 1 && (!best || t < best.t)) best = { t: t, pt: [o[0] + d[0] * t, o[1] + d[1] * t], s: P.cum[i] + u * (P.cum[i + 1] - P.cum[i]) };
+      }
+      return best;
+    }
+    function project(P, pt) {
+      var bestD = Infinity, s = 0;
+      for (var i = 0; i < P.n; i++) {
+        var a = P.pts[i], b = P.pts[(i + 1) % P.n], ex = b[0] - a[0], ey = b[1] - a[1], l2 = ex * ex + ey * ey;
+        var u = l2 ? ((pt[0] - a[0]) * ex + (pt[1] - a[1]) * ey) / l2 : 0;
+        u = Math.max(0, Math.min(1, u));
+        var qx = a[0] + u * ex - pt[0], qy = a[1] + u * ey - pt[1], dd = qx * qx + qy * qy;
+        if (dd < bestD) { bestD = dd; s = P.cum[i] + u * (P.cum[i + 1] - P.cum[i]); }
+      }
+      return s;
+    }
+    // vertices strictly between two positions, going the shorter way round
+    function walk(P, sa, sb) {
+      var L = P.L, fwd = ((sb - sa) % L + L) % L, out = [], k, dv;
+      if (fwd <= L / 2) {
+        for (k = 0; k < P.n; k++) { dv = ((P.cum[k] - sa) % L + L) % L; if (dv > 1e-6 && dv < fwd - 1e-6) out.push([dv, P.pts[k]]); }
+      } else {
+        var bwd = L - fwd;
+        for (k = 0; k < P.n; k++) { dv = ((sa - P.cum[k]) % L + L) % L; if (dv > 1e-6 && dv < bwd - 1e-6) out.push([dv, P.pts[k]]); }
+      }
+      out.sort(function (x, y) { return x[0] - y[0]; });
+      return out.map(function (x) { return x[1]; });
+    }
+    function norm(v) { var l = Math.hypot(v[0], v[1]); return [v[0] / l, v[1] / l]; }
+    function dirDeg(deg) { var a = deg * Math.PI / 180; return [Math.cos(a), Math.sin(a)]; }
+    function toPath(pts) { return "M" + pts.map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" L") + " Z"; }
+    function centroid(pts) {
+      var a = 0, cx = 0, cy = 0;
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i], q = pts[(i + 1) % pts.length], f = p[0] * q[1] - q[0] * p[1];
+        a += f; cx += (p[0] + q[0]) * f; cy += (p[1] + q[1]) * f;
+      }
+      a *= 0.5;
+      return [cx / (6 * a), cy / (6 * a)];
+    }
+
+    // geometry traced from the recorded plat (plat sheet pixels, 1 ft ~ 0.615 units)
+    var C = [1088, 688];
+    var boundary = makePoly([[1423, 315], [700, 320], [700, 342], [748, 342], [748, 530], [835, 657], [496, 776], [628, 1128], [1425, 1122]]);
+    var loopO = makePoly(roundedRect(870, 455, 1305, 922, [200, 120, 150, 230], 24));
+    var loopI = makePoly(roundedRect(904, 489, 1271, 888, [166, 86, 116, 196], 24));
+    var outA = makePoly(roundedRect(1030, 610, 1150, 745, [45, 45, 45, 45], 8));
+
+    function radial(deg, Pi, Po) { var d = dirDeg(deg); return { i: hit(Pi, C, d), o: hit(Po, C, d) }; }
+    function rays(Pi, Po, origin, dO, dI) { return { o: hit(Po, origin, dO), i: hit(Pi, origin, dI) }; }
+    function fixed(Pi, Po, op, ip) { return { o: { pt: op, s: project(Po, op) }, i: { pt: ip, s: project(Pi, ip) } }; }
+    function between(A, B, Pi, Po) {
+      return [A.o.pt, A.i.pt].concat(walk(Pi, A.i.s, B.i.s), [B.i.pt, B.o.pt], walk(Po, B.o.s, A.o.s));
+    }
+
+    var parcels = [];
+    var WORD = ["", "One", "Two", "Three", "Four"];
+    function addHand(block, lot, area, raw, outlot) {
+      parcels.push({
+        block: block, lot: lot, area: area, outlot: !!outlot,
+        pts: raw.map(function (p) { return [p[0], p[1]]; }),
+        mons: raw.filter(function (p) { return !p[2]; }).map(function (p) { return [p[0], p[1]]; })
+      });
+    }
+    function addDiv(block, lot, area, A, B, Pi, Po) {
+      parcels.push({ block: block, lot: lot, area: area, pts: between(A, B, Pi, Po), mons: [A.o.pt, A.i.pt, B.i.pt, B.o.pt] });
+    }
+
+    // Block One: lots 1-11 around Sailor Court, 12-26 radiating off Sailor Drive
+    var B1 = [46050, 25202, 24493, 25002, 25184, 23998, 27723, 32725, 26400, 22950, 20262, 42645, 39406, 45186, 56924, 32462, 22060, 21728, 21340, 21922, 21562, 25187, 38776, 27123, 20255, 23276];
+    var hand1 = [
+      [[580, 1000], [795, 970], [800, 1127], [628, 1128]],
+      [[541, 896], [650, 870.7], [652, 990], [580, 1000]],
+      [[650, 870.7], [720, 854.5], [722, 981], [652, 990]],
+      [[720, 854.5], [790, 838.2], [794, 955], [795, 970], [722, 981]],
+      [[790, 838.2], [858, 822.5], [866, 930], [794, 955]],
+      [[794, 955], [866, 930], [860, 977], [862, 991, 1], [872, 1005], [812, 1127], [800, 1127], [795, 970]],
+      [[914, 1015], [925, 1126], [812, 1127], [872, 1005], [893, 1016, 1]],
+      [[938, 991], [1051, 1045], [1041, 1125], [925, 1126], [914, 1015], [928, 1005, 1]],
+      [[928, 949], [968, 960], [1058, 985], [1051, 1045], [938, 991], [940, 977, 1], [937, 962, 1]],
+      [[899, 806], [925, 841, 1], [950, 866, 1], [975, 885, 1], [985, 891], [968, 960], [928, 949], [906, 938]],
+      [[985, 891], [1000, 899, 1], [1025, 909, 1], [1050, 916, 1], [1066, 919.5], [1058, 985], [968, 960]]
+    ];
+    hand1.forEach(function (raw, i) { addHand(1, i + 1, B1[i], raw); });
+    var d1 = [
+      fixed(loopO, boundary, [1041, 1124.9], [1066, 919.5]),
+      radial(82.55, loopO, boundary), radial(70.35, loopO, boundary), radial(58.35, loopO, boundary),
+      radial(46.3, loopO, boundary), radial(34.7, loopO, boundary)
+    ];
+    [810, 740, 672, 604, 535].forEach(function (y) { d1.push(rays(loopO, boundary, [1380, y], [1, 0], [-1, 0])); });
+    [-40.6, -51.95, -63.55, -75.4].forEach(function (a) { d1.push(radial(a, loopO, boundary)); });
+    d1.push(rays(loopO, boundary, [1088, 400], [0, -1], [0, 1]));
+    for (var k = 0; k < 15; k++) addDiv(1, 12 + k, B1[11 + k], d1[k], d1[k + 1], loopO, boundary);
+
+    // Blocks Two and Three: wedges between Outlot A and the inside of the Sailor Drive loop
+    var innerAngles = [-22, -47, -69.5, -95, -122.5, -152.5, -184.5, -211, -241.5, -277.5, -301, -322, -351];
+    var idv = innerAngles.map(function (a) { return radial(a, outA, loopI); });
+    var B2 = [18371, 18958, 20926, 22175, 21800];
+    var B3 = [21239, 20481, 18519, 22078, 22450, 22850, 21363, 18700];
+    for (k = 0; k < 5; k++) addDiv(2, k + 1, B2[k], idv[8 + k], idv[(9 + k) % 13], outA, loopI);
+    for (k = 0; k < 8; k++) addDiv(3, k + 1, B3[k], idv[k], idv[k + 1], outA, loopI);
+
+    // Block Four: three lots along the west leg, two big lots north-west of the loop
+    var B4 = [28544, 28317, 33265, 82607, 77187];
+    addHand(4, 1, B4[0], [[600, 739.5], [690, 707.9], [690, 816.3], [600, 839.3]]);
+    addHand(4, 2, B4[1], [[690, 707.9], [760, 683.3], [760, 798.4], [690, 816.3]]);
+    addHand(4, 3, B4[2], [[760, 683.3], [835, 657], [870, 657], [870, 692, 1], [873, 730, 1], [883, 767], [760, 798.4]]);
+    var D34 = { o: { pt: [835, 657], s: project(boundary, [835, 657]) }, i: hit(loopO, [835, 657], [1, 0]) };
+    var D45 = { o: { pt: [748, 445], s: project(boundary, [748, 445]) }, i: hit(loopO, [748, 445], norm([C[0] - 748, C[1] - 445])) };
+    var D5W = rays(loopO, boundary, [1053, 400], [0, -1], [0, 1]);
+    addDiv(4, 4, B4[3], D34, D45, loopO, boundary);
+    addDiv(4, 5, B4[4], D45, D5W, loopO, boundary);
+
+    // Outlots
+    parcels.push({ block: 0, lot: "A", area: 40073, outlot: true, pts: outA.pts.slice(), mons: [] });
+    addHand(0, "B", 29493, [[496, 776], [600, 739.5], [600, 839.3], [527, 858]], true);
+
+    // ---- draw ----
+    var defs = el("defs", {}, svg);
+    var pat = el("pattern", { id: "plat-hatch", width: 9, height: 9, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" }, defs);
+    el("rect", { width: 9, height: 9, fill: "rgba(110,148,105,0.10)" }, pat);
+    el("line", { x1: 0, y1: 0, x2: 0, y2: 9, stroke: "rgba(110,148,105,0.55)", "stroke-width": 1.6 }, pat);
+
+    var gCtx = el("g", {}, svg);
+    el("text", { class: "plat-title", x: 482, y: 336 }, gCtx, "SAILOR");
+    el("text", { class: "plat-title", x: 482, y: 370 }, gCtx, "CROSSING");
+    el("text", { class: "plat-meta", x: 482, y: 398 }, gCtx, "Alexandria, Minnesota");
+    el("text", { class: "plat-meta", x: 482, y: 417 }, gCtx, "Sec. 33 & 34, T129N, R37W");
+    el("text", { class: "plat-meta", x: 482, y: 436 }, gCtx, "Filed June 11, 2007");
+    var na = el("g", { transform: "translate(530 560)" }, gCtx);
+    el("path", { d: "M0 -46 L10 12 L0 4 L-10 12 Z", fill: "#1B2A31" }, na);
+    el("text", { class: "plat-meta", x: 0, y: 32, "text-anchor": "middle", "font-weight": 700 }, na, "N");
+    var sb = el("g", { transform: "translate(484 1102)" }, gCtx);
+    el("rect", { x: 0, y: 0, width: 61.5, height: 6, fill: "#1B2A31" }, sb);
+    el("rect", { x: 61.5, y: 0, width: 61.5, height: 6, fill: "none", stroke: "#1B2A31", "stroke-width": 1.2 }, sb);
+    el("text", { class: "plat-meta", x: 0, y: 24 }, sb, "0");
+    el("text", { class: "plat-meta", x: 61.5, y: 24, "text-anchor": "middle" }, sb, "100");
+    el("text", { class: "plat-meta", x: 123, y: 24, "text-anchor": "end" }, sb, "200 ft");
+    el("text", { class: "plat-context", x: 610, y: 706, transform: "rotate(-19.3 610 706)" }, gCtx, "KRUEGER'S CREEK ADDITION");
+
+    var gLots = el("g", {}, svg);
+    parcels.forEach(function (p) {
+      var g = el("g", { class: "plat-lot" + (p.outlot ? " is-outlot" : "") }, gLots);
+      el("path", { d: toPath(p.pts), pathLength: 1 }, g);
+      var c = centroid(p.pts);
+      el("text", { x: c[0].toFixed(1), y: c[1].toFixed(1) }, g, p.outlot ? "OUTLOT " + p.lot : String(p.lot));
+      p.g = g;
+    });
+
+    var roads = [
+      "M700 316 H1440 V341 H700 Z",
+      "M1053 330 H1088 V472 H1053 Z",
+      toPath(loopO.pts) + " " + toPath(loopI.pts),
+      "M527 858 L905 764 L925 806 L541 896 Z",
+      "M856 800 L895 792 L915 965 L866 965 Z",
+      "M860 977 a40 40 0 1 0 80 0 a40 40 0 1 0 -80 0 Z"
+    ];
+    var gRoads = el("g", {}, svg);
+    roads.forEach(function (d) { el("path", { d: d, class: "plat-road-edge", "fill-rule": "evenodd" }, gRoads); });
+    roads.forEach(function (d) { el("path", { d: d, class: "plat-road-fill", "fill-rule": "evenodd" }, gRoads); });
+    el("text", { class: "plat-roadname", x: 900, y: 329 }, gRoads, "PIKE ROAD");
+    el("text", { class: "plat-roadname", x: 1070, y: 405, transform: "rotate(-90 1070 405)" }, gRoads, "SAILOR WAY");
+    el("text", { class: "plat-roadname", x: 1288, y: 690, transform: "rotate(90 1288 690)" }, gRoads, "SAILOR DRIVE");
+    el("text", { class: "plat-roadname", x: 700, y: 834, transform: "rotate(-13.7 700 834)" }, gRoads, "SAILOR DRIVE");
+    el("text", { class: "plat-roadname", x: 883, y: 885, transform: "rotate(84 883 885)" }, gRoads, "SAILOR COURT");
+
+    el("path", { d: toPath(boundary.pts), class: "plat-boundary" }, svg);
+
+    // corner monuments, each shown once the first lot that uses it is set
+    var gMons = el("g", {}, svg), monMap = {}, mons = [];
+    parcels.forEach(function (p, idx) {
+      p.mons.forEach(function (m) {
+        var key = Math.round(m[0] / 3) + "," + Math.round(m[1] / 3);
+        if (monMap[key]) return;
+        var c = el("circle", { class: "plat-mon", cx: m[0].toFixed(1), cy: m[1].toFixed(1), r: 4.2 }, gMons);
+        monMap[key] = true;
+        mons.push({ el: c, first: idx });
+      });
+    });
+
+    // ---- state ----
+    var N = parcels.length, current = -1;
+    var roState = document.getElementById("ro-state"), roLot = document.getElementById("ro-lot"),
+        roArea = document.getElementById("ro-area"), roBar = document.getElementById("ro-bar"),
+        roCount = document.getElementById("ro-count"), roAcres = document.getElementById("ro-acres");
+    var cumArea = [0];
+    parcels.forEach(function (p, i) { cumArea.push(cumArea[i] + p.area); });
+    var fmt = function (n) { return n.toLocaleString("en-US"); };
+
+    function setStep(step) {
+      step = Math.max(1, Math.min(N + 1, step));
+      if (step === current) return;
+      current = step;
+      var setCount = Math.min(step, N);
+      parcels.forEach(function (p, i) {
+        p.g.classList.toggle("is-set", i < setCount);
+        p.g.classList.toggle("is-current", step <= N && i === step - 1);
+      });
+      mons.forEach(function (m) { m.el.classList.toggle("is-set", m.first < setCount); });
+      roBar.style.transform = "scaleX(" + (setCount / N) + ")";
+      roCount.textContent = setCount + " of " + N;
+      roAcres.textContent = (cumArea[setCount] / 43560).toFixed(2) + " acres";
+      if (step > N) {
+        roState.textContent = "Plat complete";
+        roLot.textContent = "Sailor Crossing";
+        roArea.textContent = "44 lots, 2 outlots, 36.97 acres";
+      } else {
+        var p = parcels[step - 1];
+        roState.textContent = "Setting corners";
+        roLot.textContent = p.outlot ? "Outlot " + p.lot : "Block " + WORD[p.block] + ", Lot " + p.lot;
+        roArea.textContent = fmt(p.area) + " sq ft";
+      }
+    }
+    setStep(N + 1);
+    return {
+      N: N,
+      setStep: setStep,
+      animate: function (on) { svg.classList.toggle("plat-anim", on); setStep(on ? 1 : N + 1); }
+    };
+  })();
+
   /* ---------- GSAP choreography ---------- */
   if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
   gsap.registerPlugin(ScrollTrigger);
@@ -1476,6 +1839,22 @@
     gsap.from(".why-stat", { yPercent: 18, opacity: 0.2, ease: "none", scrollTrigger: { trigger: ".why", start: "top 85%", end: "top 35%", scrub: 0.5 } });
   });
 
+  // subdivision design: pinned, one parcel set per scroll step, starting with Lot 1, Block One
+  mm.add("(prefers-reduced-motion: no-preference)", function () {
+    if (!plat) return;
+    plat.animate(true);
+    ScrollTrigger.create({
+      trigger: "#subdivision-design",
+      start: "top top",
+      end: function () { return "+=" + Math.round(window.innerHeight * 3.6); },
+      pin: true,
+      anticipatePin: 1,
+      refreshPriority: 1,
+      onUpdate: function (self) { plat.setStep(1 + Math.floor(self.progress * (plat.N + 1))); }
+    });
+    return function () { plat.animate(false); };
+  });
+
   // history traverse: pinned, line draws station to station (desktop)
   mm.add("(min-width: 901px) and (prefers-reduced-motion: no-preference)", function () {
     var path = document.querySelector(".traverse-path");
@@ -1496,6 +1875,10 @@
   mm.add("(max-width: 900px) and (prefers-reduced-motion: no-preference)", function () {
     gsap.fromTo(".history-rail", { scaleY: 0 }, { scaleY: 1, ease: "none", scrollTrigger: { trigger: ".stations", start: "top 75%", end: "bottom 55%", scrub: 0.4 } });
   });
+
+  // triggers were created out of page order; recompute with pin spacing in place
+  ScrollTrigger.sort();
+  ScrollTrigger.refresh();
 })();
 </script>
 </body>
