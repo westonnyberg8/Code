@@ -1352,16 +1352,50 @@
       return m;
     });
 
-    // survey stake with flag on the hilltop + pulsing ring
+    // surveyor silhouette sighting through a dumpy level on a tripod, on the hilltop + pulsing ring
     var sx = 0.72, sy = 0.52, sh = heightAt(sx, sy);
-    var stake = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.36, 10), new THREE.MeshBasicMaterial({ color: 0xe9eeea }));
-    stake.rotation.x = Math.PI / 2;
-    stake.position.set(sx, sy, sh + 0.18);
-    lift.add(stake);
-    var flag = new THREE.Mesh(new THREE.PlaneGeometry(0.13, 0.075), new THREE.MeshBasicMaterial({ color: FLAG, side: THREE.DoubleSide }));
-    flag.rotation.x = Math.PI / 2;
-    flag.position.set(sx + 0.066, sy, sh + 0.32);
-    lift.add(flag);
+    var surveyor = new THREE.Group();
+    var inkMat = new THREE.MeshBasicMaterial({ color: 0xe9eeea });
+    var hiVis = new THREE.MeshBasicMaterial({ color: FLAG });
+    var UP = new THREE.Vector3(0, 1, 0);
+    function V(x, y, z) { return new THREE.Vector3(x, y, z); }
+    function limb(a, b, r, mat) {
+      var dir = new THREE.Vector3().subVectors(b, a), len = dir.length();
+      var m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, len, 10), mat);
+      m.position.copy(a).addScaledVector(dir, 0.5);
+      m.quaternion.setFromUnitVectors(UP, dir.normalize());
+      surveyor.add(m);
+      [a, b].forEach(function (p) { var j = new THREE.Mesh(new THREE.SphereGeometry(r, 10, 8), mat); j.position.copy(p); surveyor.add(j); });
+    }
+    function ball(p, r, mat) { var m = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 12), mat); m.position.copy(p); surveyor.add(m); return m; }
+    // built in meters with Y up; tripod over the point, surveyor on its -X side facing +X
+    // tripod
+    limb(V(0, 1.3, 0), V(0.42, 0, 0), 0.035, inkMat);
+    limb(V(0, 1.3, 0), V(-0.2, 0, 0.36), 0.035, inkMat);
+    limb(V(0, 1.3, 0), V(-0.2, 0, -0.36), 0.035, inkMat);
+    var plate = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.05, 20), inkMat); plate.position.set(0, 1.31, 0); surveyor.add(plate);
+    var tribrach = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.08, 0.07, 16), inkMat); tribrach.position.set(0, 1.37, 0); surveyor.add(tribrach);
+    // dumpy level: telescope along +X, eyepiece toward the surveyor
+    var scope = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.44, 16), hiVis); scope.rotation.z = Math.PI / 2; scope.position.set(0.03, 1.46, 0); surveyor.add(scope);
+    var objective = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.07, 0.07, 16), hiVis); objective.rotation.z = Math.PI / 2; objective.position.set(0.27, 1.46, 0); surveyor.add(objective);
+    var eyepiece = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.045, 0.08, 12), inkMat); eyepiece.rotation.z = Math.PI / 2; eyepiece.position.set(-0.23, 1.46, 0); surveyor.add(eyepiece);
+    // person, bent at the waist with an eye to the eyepiece
+    limb(V(-0.64, 0.02, 0.11), V(-0.58, 0.9, 0.09), 0.075, inkMat);
+    limb(V(-0.66, 0.02, -0.11), V(-0.6, 0.9, -0.09), 0.075, inkMat);
+    limb(V(-0.59, 0.92, 0), V(-0.43, 1.36, 0), 0.155, inkMat);
+    ball(V(-0.33, 1.49, 0), 0.115, inkMat);
+    var hat = new THREE.Mesh(new THREE.SphereGeometry(0.128, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), hiVis);
+    hat.position.set(-0.34, 1.52, 0); hat.rotation.z = -0.35; surveyor.add(hat);
+    var brim = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.02, 20), hiVis);
+    brim.position.set(-0.32, 1.53, 0); brim.rotation.z = -0.35; surveyor.add(brim);
+    limb(V(-0.44, 1.33, 0.15), V(-0.3, 1.2, 0.17), 0.05, inkMat);
+    limb(V(-0.3, 1.2, 0.17), V(-0.12, 1.43, 0.08), 0.045, inkMat);
+    limb(V(-0.44, 1.33, -0.15), V(-0.32, 1.18, -0.17), 0.05, inkMat);
+    limb(V(-0.32, 1.18, -0.17), V(-0.14, 1.4, -0.08), 0.045, inkMat);
+    surveyor.scale.setScalar(0.22);
+    surveyor.rotation.x = Math.PI / 2;
+    surveyor.position.set(sx, sy, sh);
+    lift.add(surveyor);
     var ringMat = new THREE.MeshBasicMaterial({ color: FLAG, transparent: true, opacity: 0 });
     var ring = new THREE.Mesh(new THREE.RingGeometry(0.1, 0.118, 48), ringMat);
     ring.position.set(sx, sy, sh + 0.01);
