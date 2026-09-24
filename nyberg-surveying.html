@@ -330,83 +330,6 @@
   .station p { color: var(--on-light-muted); font-size: 0.98rem; }
   .history-rail { display: none; }
 
-  /* ================= PIN LOCATION (self-contained inline SVG map) ================= */
-  .pin-section { overflow: hidden; }
-  .pin-tools { display: grid; grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr); gap: var(--s4); align-items: start; margin-top: var(--s4); }
-  .pin-help { color: var(--on-light-muted); font-size: 0.95rem; }
-  .pin-help strong { color: var(--on-light); }
-  .pin-readout {
-    margin-top: var(--s3);
-    background: var(--ink);
-    color: var(--on-dark);
-    border: 1px solid rgba(150, 180, 176, 0.24);
-    border-radius: var(--radius-lg);
-    padding: var(--s3);
-  }
-  .pin-readout .ro-state { color: var(--on-dark-muted); }
-  .pin-readout .ro-lot { font-size: 1.05rem; font-weight: 650; font-stretch: 100%; text-transform: none; letter-spacing: 0; line-height: 1.4; }
-  .pin-readout .ro-area { color: var(--on-dark-muted); font-size: 0.9rem; font-weight: 500; margin: 0.15rem 0 var(--s2); }
-  .pin-readout .btn { width: 100%; margin-top: 0.25rem; }
-  .pin-readout .btn[disabled] { opacity: 0.45; pointer-events: none; }
-
-  .pin-map-wrap { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line-light); box-shadow: 0 30px 60px -30px rgba(27, 42, 49, 0.35); background: var(--paper-2); }
-  .pin-map-frame { position: relative; width: 100%; aspect-ratio: 900 / 620; }
-  #pin-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  #pin-svg .pin-state { fill: var(--paper-2); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; transition: fill 160ms ease; }
-  #pin-svg .pin-state:hover { fill: rgba(240, 120, 47, 0.07); cursor: crosshair; }
-  #pin-svg .pin-state-label { font: 700 22px "Archivo", sans-serif; font-stretch: 105%; fill: var(--on-light-muted); text-anchor: middle; pointer-events: none; letter-spacing: 0.01em; }
-  #pin-svg .pin-city-dot { fill: var(--patina); opacity: 0.55; cursor: pointer; transition: opacity 120ms ease, r 120ms ease; }
-  #pin-svg .pin-city-dot:hover, #pin-svg .pin-city-dot:focus-visible { opacity: 1; }
-  #pin-svg .pin-home-ring { fill: none; stroke: var(--flag); stroke-width: 1.4; opacity: 0.55; }
-  #pin-svg .pin-home-dot { fill: var(--flag); stroke: var(--ink); stroke-width: 1.2; }
-  #pin-svg .pin-home-label { font: 650 13px "Libre Franklin", sans-serif; fill: var(--on-light); }
-  #pin-svg .pin-active-marker { cursor: grab; }
-  .pin-search {
-    position: absolute; z-index: 1000; top: var(--s2); left: var(--s2); right: var(--s2);
-    max-width: 24rem;
-  }
-  .pin-search-box {
-    display: flex; align-items: center; gap: 0.5rem;
-    background: var(--glass-light); border: 1px solid var(--glass-light-border);
-    border-radius: 10px; padding: 0.4rem 0.4rem 0.4rem 0.9rem;
-    -webkit-backdrop-filter: blur(16px) saturate(130%); backdrop-filter: blur(16px) saturate(130%);
-    box-shadow: 0 12px 30px -10px rgba(27, 42, 49, 0.35);
-  }
-  .pin-search-box svg { flex: none; color: var(--on-light-muted); }
-  .pin-search-box input {
-    flex: 1; min-width: 0; border: 0; background: transparent; font: inherit; font-size: 0.98rem;
-    color: var(--on-light); min-height: 40px;
-  }
-  .pin-search-box input:focus-visible { outline: none; }
-  .pin-search-box input::placeholder { color: var(--on-light-muted); }
-  .pin-search-go {
-    flex: none; min-height: 38px; min-width: 38px; border-radius: 7px; border: 0; cursor: pointer;
-    background: var(--flag); color: var(--ink); display: flex; align-items: center; justify-content: center;
-  }
-  .pin-search-go:hover { background: var(--flag-hover); }
-  .pin-suggestions {
-    list-style: none; margin: 0.5rem 0 0; padding: 0.35rem;
-    background: var(--paper-2); border: 1px solid var(--line-light); border-radius: 10px;
-    box-shadow: 0 20px 40px -16px rgba(27, 42, 49, 0.4);
-    max-height: 15rem; overflow-y: auto;
-  }
-  .pin-suggestions li { border-radius: 7px; }
-  .pin-suggestions button {
-    display: block; width: 100%; text-align: left; background: transparent; border: 0; cursor: pointer;
-    font: inherit; font-size: 0.92rem; color: var(--on-light); padding: 0.55rem 0.65rem; border-radius: 7px;
-  }
-  .pin-suggestions li[aria-selected="true"] button, .pin-suggestions button:hover { background: rgba(240, 120, 47, 0.14); }
-  .pin-search-status { font-size: 0.85rem; color: var(--on-light-muted); padding: 0.5rem 0.65rem 0.15rem; }
-  .pin-caption { color: var(--on-light-muted); font-size: 0.82rem; margin-top: var(--s2); }
-  .pin-caption a { color: var(--flag-ink); }
-  @media (max-width: 900px) {
-    .pin-tools { grid-template-columns: minmax(0, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .pin-search { max-width: none; }
-    #pin-svg .pin-state-label { font-size: 26px; }
-  }
-
   /* ================= CONTACT ================= */
   .contact { background: var(--ink); color: var(--on-dark); overflow: hidden; }
   .contact-layout { position: relative; display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: var(--s5); align-items: start; }
@@ -449,7 +372,6 @@
   }
   .field textarea { min-height: 110px; resize: vertical; }
   .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: none; border-color: var(--flag); box-shadow: 0 0 0 3px rgba(240, 120, 47, 0.45); }
-  .field input.pin-filled { border-color: var(--flag); box-shadow: 0 0 0 3px rgba(240, 120, 47, 0.45); transition: box-shadow 200ms ease, border-color 200ms ease; }
   .field [aria-invalid="true"] { border-color: #FF9A8A; box-shadow: 0 0 0 2px rgba(255, 154, 138, 0.35); }
   .field .error { color: #FFB4A8; font-size: 0.88rem; font-weight: 600; }
   .form-summary { background: rgba(255, 154, 138, 0.12); border: 1px solid rgba(255, 154, 138, 0.5); border-radius: 10px; padding: var(--s2); margin-bottom: var(--s3); }
@@ -687,7 +609,7 @@
         <dl>
           <dt>Base</dt><dd>Alexandria, MN</dd>
           <dt>In the field since</dt><dd>1982</dd>
-          <dt>Surveys completed</dt><dd><span aria-hidden="true" data-count="11000">11,000+</span><span class="sr-only">11,000+</span></dd>
+          <dt>Surveys completed</dt><dd><span aria-hidden="true" data-count="13000">13,000+</span><span class="sr-only">13,000+</span></dd>
           <dt>Licensed surveyors</dt><dd>2 on staff</dd>
           <dt>Coverage</dt><dd>MN, ND &amp; SD</dd>
         </dl>
@@ -936,7 +858,7 @@
     <div class="wrap why-grid">
       <div>
         <h2 id="why-title" class="sr-only">Why Nyberg Surveying</h2>
-        <p class="why-stat" aria-hidden="true">11,000+</p>
+        <p class="why-stat" aria-hidden="true">13,000+</p>
         <p class="why-stat-label">surveys completed since 1982, and every one of them still works for you.</p>
         <p class="why-body">Each survey adds to our local records and survey control. When we come out to your property, we're often starting from monuments and measurements we've already verified nearby, which keeps our work accurate and our pricing competitive.</p>
         <div class="why-facts">
@@ -1001,73 +923,13 @@
           <li class="station">
             <span class="station-dot" aria-hidden="true"></span>
             <div class="station-card">
-              <p class="station-year">11,000+</p>
+              <p class="station-year">13,000+</p>
               <h3>Surveys and counting</h3>
               <p>Work across Minnesota and the eastern Dakotas, built on records we keep.</p>
             </div>
           </li>
         </ol>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ PIN LOCATION ============ -->
-  <section class="section section-light pin-section" id="pin-location" aria-labelledby="pin-title">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="section-eyebrow">Meet us there</p>
-        <h2 id="pin-title">Pin your general area</h2>
-        <p>Search for the nearest city or town in Minnesota, North Dakota, or South Dakota, or click straight on the map. We'll confirm the exact address when we talk.</p>
-      </div>
-
-      <div class="pin-tools">
-        <div>
-          <p class="pin-help">
-            Type a city or town above the map, or click anywhere on the map to drop a general pin. Use <strong>Use this location</strong> to carry it into the survey request form below.
-          </p>
-          <div class="pin-readout">
-            <p class="ro-state" id="pin-state"><span class="dot" aria-hidden="true"></span><span id="pin-state-text">No pin yet</span></p>
-            <p class="ro-lot" id="pin-address">Search above or click the map to drop a pin.</p>
-            <p class="ro-area" id="pin-coords"></p>
-            <button class="btn btn-flag" type="button" id="pin-use-btn" disabled>Use this location for my request</button>
-          </div>
-        </div>
-
-        <div class="pin-map-wrap">
-          <div class="pin-map-frame">
-            <svg id="pin-svg" viewBox="0 0 900 620" role="application" aria-label="Map of Minnesota, North Dakota, and South Dakota. Click a state to drop a general pin, or use the search box above.">
-              <title>Service area: Minnesota, North Dakota, and South Dakota</title>
-          <path class="pin-state" data-state="Minnesota" d="M423.8 55.8 L441.0 55.9 L496.0 55.9 L543.4 56.0 L543.4 24.0 L549.0 26.6 L554.8 25.2 L560.8 29.0 L562.5 31.5 L565.4 45.9 L566.8 47.6 L570.5 65.5 L569.3 70.4 L570.1 74.3 L573.0 77.3 L579.0 80.5 L584.0 81.4 L585.6 80.0 L594.8 80.8 L597.0 85.0 L609.7 85.5 L619.6 87.0 L621.2 91.7 L620.6 95.1 L621.9 96.0 L630.6 95.9 L631.6 94.8 L636.1 94.9 L640.9 93.5 L640.7 90.1 L647.5 86.8 L655.6 85.5 L657.5 87.1 L668.4 87.1 L683.3 94.1 L688.7 93.8 L688.9 97.3 L685.0 97.8 L684.2 100.4 L687.5 102.6 L695.9 101.7 L699.1 105.5 L697.8 108.0 L699.1 111.5 L704.0 120.5 L709.2 118.6 L707.5 112.6 L710.2 109.4 L713.3 110.2 L722.0 109.0 L725.3 112.2 L724.9 116.8 L728.4 119.7 L731.3 119.1 L733.2 121.6 L741.7 122.3 L742.7 127.0 L741.9 129.3 L746.0 130.8 L750.8 129.8 L750.2 135.2 L754.7 133.2 L757.6 134.7 L761.5 133.0 L768.6 131.8 L778.1 123.8 L781.6 122.8 L784.3 120.6 L789.5 118.4 L792.4 119.4 L792.4 124.1 L795.9 125.3 L794.7 127.2 L796.7 130.6 L800.0 130.8 L807.3 128.8 L808.5 130.8 L813.7 129.8 L819.1 131.0 L823.0 130.1 L832.9 129.5 L838.9 131.5 L840.8 136.2 L847.8 140.0 L850.9 137.5 L855.1 136.9 L857.8 138.3 L862.5 137.9 L864.8 139.2 L870.0 137.6 L864.4 141.6 L862.3 140.2 L861.5 142.6 L858.0 143.6 L852.6 147.8 L844.9 150.2 L842.0 152.8 L831.3 156.0 L821.4 159.8 L818.2 160.2 L809.6 163.4 L808.7 164.4 L798.2 169.9 L790.5 175.5 L775.6 188.6 L772.1 193.5 L760.7 206.2 L755.3 211.3 L750.0 214.2 L744.6 220.5 L742.3 221.3 L736.5 227.2 L734.4 227.9 L721.8 237.4 L720.0 239.2 L721.6 242.8 L724.5 246.0 L720.2 242.5 L717.3 243.3 L716.6 245.3 L713.3 246.3 L715.2 247.7 L712.9 250.7 L708.4 249.6 L708.4 298.4 L706.3 299.1 L705.1 303.3 L700.1 302.8 L698.0 306.8 L695.1 305.9 L693.5 308.6 L688.3 310.2 L684.2 313.6 L680.0 324.1 L675.5 327.6 L674.0 335.7 L674.2 339.5 L678.6 341.0 L680.6 340.3 L683.5 342.6 L683.3 344.8 L688.1 350.9 L687.9 354.4 L684.8 357.8 L685.0 359.9 L681.5 363.3 L681.9 369.8 L681.0 372.1 L682.3 378.6 L679.0 382.7 L681.3 385.1 L680.8 389.8 L682.1 392.7 L680.6 395.7 L681.3 401.0 L678.8 406.7 L679.8 409.3 L683.1 411.2 L689.5 417.4 L689.3 419.1 L692.2 420.2 L694.1 423.4 L704.4 424.0 L706.9 425.2 L709.0 430.8 L711.9 433.5 L722.2 437.1 L726.8 439.9 L729.7 442.7 L729.7 446.5 L731.3 447.6 L732.4 453.6 L735.9 456.8 L741.5 459.7 L742.1 461.8 L749.5 468.2 L757.6 470.2 L760.7 474.2 L766.9 483.8 L768.8 489.2 L767.1 497.2 L767.5 502.3 L769.6 504.9 L768.8 508.0 L770.4 511.8 L728.2 511.8 L681.9 511.8 L657.9 511.9 L611.7 511.9 L574.5 511.8 L509.7 511.8 L468.5 511.8 L468.5 425.3 L468.7 418.1 L468.5 396.6 L468.5 362.5 L466.5 357.9 L459.0 353.7 L455.3 353.4 L452.4 349.5 L450.5 344.3 L445.1 337.3 L446.2 334.0 L451.3 329.6 L455.9 326.8 L458.4 322.3 L461.3 319.0 L462.1 309.9 L461.3 302.4 L462.5 299.7 L460.2 286.4 L460.0 277.2 L457.3 275.2 L453.2 268.3 L452.2 264.8 L451.3 256.3 L449.1 252.2 L448.7 249.5 L449.7 244.6 L448.4 236.6 L449.5 235.4 L450.7 227.1 L449.5 227.9 L447.2 224.3 L447.4 212.1 L446.4 205.5 L446.0 197.4 L446.6 193.8 L445.1 186.5 L445.3 171.1 L444.3 170.8 L442.9 164.5 L440.6 158.0 L438.9 156.7 L436.7 149.6 L436.0 145.4 L433.8 143.0 L432.7 134.4 L429.4 127.2 L428.8 119.4 L430.2 115.6 L428.6 109.0 L429.2 105.3 L429.0 97.6 L427.5 93.4 L429.0 88.0 L430.9 86.3 L431.5 81.9 L428.4 76.2 L426.7 67.4 L425.5 65.7 L423.2 58.7 L423.8 55.8 Z" tabindex="0" role="button" aria-label="Minnesota — view service area"/>
-          <text class="pin-state-label" x="592.2" y="272.4">MINNESOTA</text>
-          <path class="pin-state" data-state="North Dakota" d="M30.6 55.9 L69.5 56.0 L136.2 56.0 L180.0 56.0 L199.1 56.0 L239.0 55.9 L272.1 56.0 L300.1 56.0 L329.3 55.9 L382.2 55.8 L423.8 55.8 L423.2 58.7 L425.5 65.7 L426.7 67.4 L428.4 76.2 L431.5 81.9 L430.9 86.3 L429.0 88.0 L427.5 93.4 L429.0 97.6 L429.2 105.3 L428.6 109.0 L430.2 115.6 L428.8 119.4 L429.4 127.2 L432.7 134.4 L433.8 143.0 L436.0 145.4 L436.7 149.6 L438.9 156.7 L440.6 158.0 L442.9 164.5 L444.3 170.8 L445.3 171.1 L445.1 186.5 L446.6 193.8 L446.0 197.4 L446.4 205.5 L447.4 212.1 L447.2 224.3 L449.5 227.9 L450.7 227.1 L449.5 235.4 L448.4 236.6 L449.7 244.6 L448.7 249.5 L449.1 252.2 L451.3 256.3 L452.2 264.8 L453.2 268.3 L457.3 275.2 L460.0 277.2 L460.2 286.4 L462.5 299.7 L461.3 302.4 L462.1 309.9 L418.6 310.0 L380.2 309.9 L355.5 309.9 L303.4 309.6 L263.7 309.4 L226.6 309.3 L174.3 309.2 L148.8 309.2 L88.4 309.1 L52.6 309.1 L30.8 309.1 L30.8 107.7 L30.6 106.5 L30.6 55.9 Z" tabindex="0" role="button" aria-label="North Dakota — view service area"/>
-          <text class="pin-state-label" x="237.0" y="184.7">NORTH DAKOTA</text>
-          <path class="pin-state" data-state="South Dakota" d="M30.0 387.7 L31.1 387.4 L31.1 325.3 L30.8 309.1 L52.6 309.1 L88.4 309.1 L148.8 309.2 L174.3 309.2 L226.6 309.3 L263.7 309.4 L303.4 309.6 L355.5 309.9 L380.2 309.9 L418.6 310.0 L462.1 309.9 L461.3 319.0 L458.4 322.3 L455.9 326.8 L451.3 329.6 L446.2 334.0 L445.1 337.3 L450.5 344.3 L452.4 349.5 L455.3 353.4 L459.0 353.7 L466.5 357.9 L468.5 362.5 L468.5 396.6 L468.7 418.1 L468.5 425.3 L468.5 511.8 L460.2 511.8 L461.3 513.4 L459.8 516.0 L464.4 520.6 L464.2 528.4 L461.3 528.8 L462.9 532.5 L462.3 534.7 L467.3 534.9 L467.7 540.8 L469.6 543.3 L468.1 548.0 L465.2 549.1 L466.2 553.1 L464.6 555.1 L465.8 556.6 L463.3 559.9 L463.3 565.6 L461.1 566.7 L460.5 570.4 L458.2 572.3 L458.4 577.7 L461.5 579.6 L465.0 583.9 L467.1 590.1 L466.2 593.3 L468.9 595.5 L465.4 596.0 L464.4 593.9 L459.4 594.2 L458.0 590.4 L453.6 585.7 L455.1 582.0 L452.8 580.9 L448.4 580.7 L448.2 577.8 L442.4 575.3 L440.0 576.6 L438.3 573.1 L429.4 572.2 L428.4 570.2 L424.7 568.8 L424.4 566.1 L419.3 564.3 L416.2 565.3 L413.1 564.4 L411.6 566.0 L407.9 565.0 L404.6 565.9 L401.3 565.2 L397.5 566.4 L392.4 565.7 L388.2 564.2 L386.6 565.0 L384.7 570.3 L382.2 572.4 L378.3 573.0 L371.9 568.1 L364.4 563.7 L352.4 557.6 L350.6 553.4 L327.4 553.4 L288.9 553.5 L257.2 553.4 L213.0 553.5 L170.3 553.6 L157.5 553.3 L120.7 553.3 L91.1 553.3 L30.4 553.2 L30.4 528.6 L30.2 528.1 L30.2 397.9 L30.0 387.7 Z" tabindex="0" role="button" aria-label="South Dakota — view service area"/>
-          <text class="pin-state-label" x="250.7" y="434.2">SOUTH DAKOTA</text>
-              <g id="pin-city-layer" aria-hidden="true"></g>
-              <g class="pin-home-marker" transform="translate(419.8 279.9)" aria-label="Nyberg Surveying office, Alexandria, MN">
-                <circle class="pin-home-ring" r="11"/>
-                <circle class="pin-home-dot" r="4.5"/>
-                <text class="pin-home-label" x="10" y="4">Alexandria (office)</text>
-              </g>
-              <g id="pin-active-marker" class="pin-active-marker" hidden>
-                <path d="M0 0C-8 0-14 6.6-14 14.7C-14 25.4 0 40 0 40S14 25.4 14 14.7C14 6.6 8 0 0 0Z" fill="var(--flag)" stroke="var(--ink)" stroke-width="1.6" transform="translate(0 -40)"/>
-                <circle cx="0" cy="-25.3" r="4.6" fill="var(--ink)"/>
-              </g>
-            </svg>
-          </div>
-          <div class="pin-search">
-            <div class="pin-search-box">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 20 L16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <input id="pin-search-input" type="text" role="combobox" aria-expanded="false" aria-controls="pin-suggestions" aria-autocomplete="list" autocomplete="off" placeholder="Search a city or town" />
-              <button class="pin-search-go" type="button" id="pin-search-go" aria-label="Search">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-            </div>
-            <ul class="pin-suggestions" id="pin-suggestions" role="listbox" hidden></ul>
-          </div>
-        </div>
-      </div>
-      <p class="pin-caption">A simplified locator map for general reference, not a surveying-grade instrument &mdash; we'll confirm the exact property location with you directly. Dots mark towns across our service area; click one, search, or click anywhere on the map.</p>
     </div>
   </section>
 
@@ -1981,245 +1843,6 @@
     };
   })();
 
-  /* ---------- PIN LOCATION: self-contained inline SVG map of MN/ND/SD ---------- */
-  (function initPinMap() {
-    var svg = document.getElementById("pin-svg");
-    if (!svg) return;
-
-    // Equirectangular projection baked from real Census TIGER boundaries (via us-atlas)
-    // at authoring time; these constants must match the ones used to generate the
-    // <path> "d" data above so city dots and clicks land in the right place.
-    var LON_MIN = -104.05930966769667, LAT_MAX = 49.384686592055914;
-    var COS_REF = 0.6954777146510005, SCALE_K = 82.8989419731104;
-    var OFF_X = 30.01837087192365, OFF_Y = 24;
-    function project(lon, lat) {
-      return [(lon - LON_MIN) * COS_REF * SCALE_K + OFF_X, (LAT_MAX - lat) * SCALE_K + OFF_Y];
-    }
-    function unproject(x, y) {
-      return [(x - OFF_X) / (COS_REF * SCALE_K) + LON_MIN, LAT_MAX - (y - OFF_Y) / SCALE_K];
-    }
-
-    // Real towns/cities across the three states (approximate coordinates - a general
-    // locator, not survey-grade). [name, state abbr, lat, lon]
-    var CITIES = [
-      ["Alexandria", "MN", 45.8852, -95.3775], ["Minneapolis", "MN", 44.9778, -93.2650],
-      ["Saint Paul", "MN", 44.9537, -93.0900], ["Duluth", "MN", 46.7867, -92.1005],
-      ["Rochester", "MN", 44.0121, -92.4802], ["St. Cloud", "MN", 45.5579, -94.1632],
-      ["Mankato", "MN", 44.1636, -93.9994], ["Moorhead", "MN", 46.8738, -96.7678],
-      ["Bemidji", "MN", 47.4736, -94.8803], ["Brainerd", "MN", 46.3580, -94.2008],
-      ["Fergus Falls", "MN", 46.2830, -96.0776], ["Willmar", "MN", 45.1219, -95.0433],
-      ["Hutchinson", "MN", 44.8875, -94.3697], ["Marshall", "MN", 44.4469, -95.7883],
-      ["Worthington", "MN", 43.6199, -95.5964], ["Albert Lea", "MN", 43.6480, -93.3683],
-      ["Austin", "MN", 43.6666, -92.9746], ["Winona", "MN", 44.0499, -91.6393],
-      ["Red Wing", "MN", 44.5622, -92.5335], ["Northfield", "MN", 44.4583, -93.1616],
-      ["Faribault", "MN", 44.2953, -93.2688], ["Owatonna", "MN", 44.0836, -93.2260],
-      ["New Ulm", "MN", 44.3125, -94.4602], ["Litchfield", "MN", 45.1274, -94.5300],
-      ["Grand Rapids", "MN", 47.2372, -93.5300], ["International Falls", "MN", 48.6011, -93.4108],
-      ["Thief River Falls", "MN", 48.1197, -96.1814], ["Detroit Lakes", "MN", 46.8172, -95.8453],
-      ["Park Rapids", "MN", 46.9227, -95.0589], ["Little Falls", "MN", 45.9761, -94.3622],
-      ["Elk River", "MN", 45.3037, -93.5670], ["Anoka", "MN", 45.1977, -93.3872],
-      ["Cambridge", "MN", 45.5733, -93.2244], ["Monticello", "MN", 45.3053, -93.7938],
-      ["Buffalo", "MN", 45.1719, -93.8744], ["Crookston", "MN", 47.7742, -96.6086],
-      ["Wadena", "MN", 46.4419, -95.1361], ["Pipestone", "MN", 44.0003, -96.3178],
-      ["Fairmont", "MN", 43.6516, -94.4611], ["Waseca", "MN", 44.0777, -93.5074],
-      ["Cloquet", "MN", 46.7221, -92.4594], ["Virginia", "MN", 47.5233, -92.5366],
-      ["Hibbing", "MN", 47.4272, -92.9377], ["Two Harbors", "MN", 47.0227, -91.6712],
-      ["Ely", "MN", 47.9032, -91.8670],
-      ["Fargo", "ND", 46.8772, -96.7898], ["Bismarck", "ND", 46.8083, -100.7837],
-      ["Grand Forks", "ND", 47.9253, -97.0329], ["Minot", "ND", 48.2330, -101.2963],
-      ["West Fargo", "ND", 46.8747, -96.9003], ["Williston", "ND", 48.1470, -103.6180],
-      ["Dickinson", "ND", 46.8792, -102.7896], ["Mandan", "ND", 46.8267, -100.8896],
-      ["Jamestown", "ND", 46.9105, -98.7084], ["Wahpeton", "ND", 46.2652, -96.6059],
-      ["Devils Lake", "ND", 48.1128, -98.8651], ["Valley City", "ND", 46.9233, -98.0032],
-      ["Grafton", "ND", 48.4127, -97.4103], ["Rugby", "ND", 48.3672, -99.9990],
-      ["Watford City", "ND", 47.8028, -103.2846], ["Beulah", "ND", 47.2633, -101.7793],
-      ["Bottineau", "ND", 48.8331, -100.4526], ["Carrington", "ND", 47.4494, -99.1256],
-      ["Hazen", "ND", 47.2967, -101.6293], ["Lisbon", "ND", 46.4441, -97.6798],
-      ["New Rockford", "ND", 47.6797, -99.1379], ["Oakes", "ND", 46.1444, -98.0918],
-      ["Washburn", "ND", 47.2864, -101.0271],
-      ["Sioux Falls", "SD", 43.5460, -96.7313], ["Rapid City", "SD", 44.0805, -103.2310],
-      ["Aberdeen", "SD", 45.4647, -98.4865], ["Brookings", "SD", 44.3114, -96.7984],
-      ["Watertown", "SD", 44.8996, -97.1151], ["Mitchell", "SD", 43.7096, -98.0298],
-      ["Yankton", "SD", 42.8711, -97.3973], ["Huron", "SD", 44.3633, -98.2140],
-      ["Pierre", "SD", 44.3683, -100.3510], ["Vermillion", "SD", 42.7794, -96.9292],
-      ["Spearfish", "SD", 44.4908, -103.8590], ["Belle Fourche", "SD", 44.6714, -103.8521],
-      ["Sturgis", "SD", 44.4093, -103.5091], ["Madison", "SD", 44.0061, -97.1139],
-      ["Brandon", "SD", 43.5946, -96.5717], ["Milbank", "SD", 45.2183, -96.6339],
-      ["Redfield", "SD", 44.8752, -98.5187], ["Winner", "SD", 43.3766, -99.1554],
-      ["Custer", "SD", 43.7675, -103.5966], ["Deadwood", "SD", 44.3767, -103.7290],
-      ["Hot Springs", "SD", 43.4308, -103.4744], ["Chamberlain", "SD", 43.8069, -99.3290],
-      ["Mobridge", "SD", 45.5372, -100.4276], ["Lead", "SD", 44.3517, -103.7638]
-    ];
-
-    function nearest(lon, lat) {
-      var best = null, bestD = Infinity;
-      for (var i = 0; i < CITIES.length; i++) {
-        var c = CITIES[i], dLat = lat - c[2], dLon = (lon - c[3]) * COS_REF, d = dLat * dLat + dLon * dLon;
-        if (d < bestD) { bestD = d; best = c; }
-      }
-      var miles = Math.sqrt(bestD) * 69;
-      return { city: best, miles: miles };
-    }
-
-    /* ---- draw city dots (progressive enhancement over the static state outlines) ---- */
-    var NS = "http://www.w3.org/2000/svg";
-    var cityLayer = document.getElementById("pin-city-layer");
-    CITIES.forEach(function (c) {
-      if (c[0] === "Alexandria") return; // already shown as the permanent office marker
-      var p = project(c[3], c[2]);
-      var dot = document.createElementNS(NS, "circle");
-      dot.setAttribute("class", "pin-city-dot");
-      dot.setAttribute("cx", p[0].toFixed(1));
-      dot.setAttribute("cy", p[1].toFixed(1));
-      dot.setAttribute("r", 3.4);
-      dot.setAttribute("tabindex", "0");
-      dot.setAttribute("role", "button");
-      dot.setAttribute("aria-label", c[0] + ", " + c[1]);
-      dot.addEventListener("click", function () { chooseCity(c); });
-      dot.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); chooseCity(c); } });
-      cityLayer.appendChild(dot);
-    });
-
-    /* ---- state readout ---- */
-    var stateEl = document.getElementById("pin-state-text");
-    var addressEl = document.getElementById("pin-address");
-    var coordsEl = document.getElementById("pin-coords");
-    var useBtn = document.getElementById("pin-use-btn");
-    var marker = document.getElementById("pin-active-marker");
-    var current = null; // { lon, lat, label }
-
-    function setActivePin(lon, lat, label) {
-      var p = project(lon, lat);
-      marker.setAttribute("transform", "translate(" + p[0].toFixed(1) + " " + p[1].toFixed(1) + ")");
-      marker.removeAttribute("hidden");
-      current = { lon: lon, lat: lat, label: label };
-      stateEl.textContent = "Pin set";
-      addressEl.textContent = label;
-      coordsEl.textContent = lat.toFixed(3) + ", " + lon.toFixed(3);
-      useBtn.disabled = false;
-    }
-    function chooseCity(c) {
-      closeList();
-      input.value = c[0] + ", " + c[1];
-      setActivePin(c[3], c[2], c[0] + ", " + c[1]);
-    }
-    function pointFromEvent(evt) {
-      var pt = svg.createSVGPoint();
-      pt.x = evt.clientX; pt.y = evt.clientY;
-      var loc = pt.matrixTransform(svg.getScreenCTM().inverse());
-      return [loc.x, loc.y];
-    }
-    function dropPinAt(x, y) {
-      var ll = unproject(x, y);
-      var n = nearest(ll[0], ll[1]);
-      var label = n.miles < 2 ? n.city[0] + ", " + n.city[1] + " area" : "Near " + n.city[0] + ", " + n.city[1] + " (≈" + Math.round(n.miles) + " mi)";
-      setActivePin(ll[0], ll[1], label);
-    }
-
-    svg.querySelectorAll(".pin-state").forEach(function (path) {
-      path.addEventListener("click", function (e) { var xy = pointFromEvent(e); dropPinAt(xy[0], xy[1]); });
-      path.addEventListener("keydown", function (e) {
-        if (e.key !== "Enter" && e.key !== " ") return;
-        e.preventDefault();
-        var box = path.getBBox();
-        dropPinAt(box.x + box.width / 2, box.y + box.height / 2);
-      });
-    });
-
-    /* ---- drag the active pin to fine-tune it ---- */
-    var dragging = false;
-    marker.style.cursor = "grab";
-    marker.addEventListener("pointerdown", function (e) { dragging = true; marker.setPointerCapture(e.pointerId); marker.style.cursor = "grabbing"; });
-    marker.addEventListener("pointermove", function (e) {
-      if (!dragging) return;
-      var xy = pointFromEvent(e);
-      marker.setAttribute("transform", "translate(" + xy[0].toFixed(1) + " " + xy[1].toFixed(1) + ")");
-    });
-    ["pointerup", "pointercancel"].forEach(function (evt) {
-      marker.addEventListener(evt, function (e) {
-        if (!dragging) return;
-        dragging = false;
-        marker.style.cursor = "grab";
-        var xy = pointFromEvent(e);
-        dropPinAt(xy[0], xy[1]);
-      });
-    });
-
-    /* ---- search over the local city list (no network call) ---- */
-    var input = document.getElementById("pin-search-input");
-    var list = document.getElementById("pin-suggestions");
-    var goBtn = document.getElementById("pin-search-go");
-    var results = [], activeIndex = -1;
-
-    function closeList() {
-      list.hidden = true;
-      list.innerHTML = "";
-      input.setAttribute("aria-expanded", "false");
-      input.removeAttribute("aria-activedescendant");
-      activeIndex = -1;
-    }
-    function renderList(items, statusText) {
-      results = items;
-      list.innerHTML = "";
-      if (statusText) {
-        var s = document.createElement("li");
-        s.className = "pin-search-status";
-        s.textContent = statusText;
-        list.appendChild(s);
-      }
-      items.forEach(function (c, i) {
-        var li = document.createElement("li");
-        li.setAttribute("role", "option");
-        li.id = "pin-opt-" + i;
-        li.setAttribute("aria-selected", "false");
-        var btn = document.createElement("button");
-        btn.type = "button";
-        btn.textContent = c[0] + ", " + c[1];
-        btn.addEventListener("click", function () { chooseCity(c); });
-        li.appendChild(btn);
-        list.appendChild(li);
-      });
-      list.hidden = items.length === 0 && !statusText;
-      input.setAttribute("aria-expanded", list.hidden ? "false" : "true");
-    }
-    function runSearch(q) {
-      q = (q || "").trim().toLowerCase();
-      if (q.length < 1) { closeList(); return; }
-      var matches = CITIES.filter(function (c) { return c[0].toLowerCase().indexOf(q) !== -1; }).slice(0, 8);
-      renderList(matches, matches.length ? null : "No towns match “" + q + "” in Minnesota, North Dakota, or South Dakota");
-    }
-    input.addEventListener("input", function () { runSearch(input.value); });
-    input.addEventListener("keydown", function (e) {
-      if (list.hidden && e.key !== "Enter") return;
-      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-        e.preventDefault();
-        if (!results.length) return;
-        activeIndex = e.key === "ArrowDown" ? Math.min(activeIndex + 1, results.length - 1) : Math.max(activeIndex - 1, 0);
-        Array.prototype.forEach.call(list.querySelectorAll("li[role=option]"), function (li, i) { li.setAttribute("aria-selected", String(i === activeIndex)); });
-        input.setAttribute("aria-activedescendant", "pin-opt-" + activeIndex);
-      } else if (e.key === "Enter") {
-        e.preventDefault();
-        if (activeIndex >= 0 && results[activeIndex]) chooseCity(results[activeIndex]);
-        else if (results.length) chooseCity(results[0]);
-      } else if (e.key === "Escape") {
-        closeList();
-      }
-    });
-    goBtn.addEventListener("click", function () { if (results.length) chooseCity(results[activeIndex >= 0 ? activeIndex : 0]); });
-    document.addEventListener("click", function (e) { if (!e.target.closest(".pin-search")) closeList(); });
-
-    /* ---- hand off to the request form ---- */
-    useBtn.addEventListener("click", function () {
-      if (!current) return;
-      var field = document.getElementById("f-property");
-      field.value = current.label + " (" + current.lat.toFixed(3) + ", " + current.lon.toFixed(3) + ")";
-      document.getElementById("contact").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-      field.focus();
-      field.classList.add("pin-filled");
-      setTimeout(function () { field.classList.remove("pin-filled"); }, 1600);
-    });
-  })();
-
   /* ---------- GSAP choreography ---------- */
   if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
   gsap.registerPlugin(ScrollTrigger);
@@ -2237,7 +1860,7 @@
     var counter = document.querySelector("[data-count]");
     var cv = { v: 0 };
     intro.fromTo(cv, { v: 0 }, {
-      v: 11000, duration: 1.6, ease: "power2.out",
+      v: 13000, duration: 1.6, ease: "power2.out",
       onUpdate: function () { counter.textContent = Math.round(cv.v).toLocaleString("en-US") + "+"; }
     }, 2.3);
 
