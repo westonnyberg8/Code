@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Meet the Team | Nyberg Surveying, Inc.</title>
+<meta name="description" content="Meet Brad and Eric Nyberg, owners and registered land surveyors at Nyberg Surveying in Alexandria, Minnesota. Licensed in Minnesota, North Dakota, and South Dakota." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0F171C;
+    --ink-2: #16222A;
+    --ink-3: #0A1115;
+    --paper: #EEF3F6;
+    --paper-2: #F8FAFB;
+    --flag: #009FD7;
+    --flag-hover: #29B4E8;
+    --flag-ink: #00719A;
+    --focus: #0086B8;
+    --grid: #4F8299;
+    --lake: #3F6475;
+    --on-dark: #EAF1F5;
+    --on-dark-muted: #A3B5BF;
+    --on-light: #0F171C;
+    --on-light-muted: #485862;
+    --line-light: #C6D3DB;
+    --glass-dark: rgba(22, 34, 42, 0.42);
+    --glass-dark-border: rgba(150, 184, 200, 0.26);
+    --glass-light: rgba(248, 250, 251, 0.62);
+    --glass-light-border: rgba(255, 255, 255, 0.85);
+    --radius: 10px;
+    --radius-lg: 18px;
+    --s1: 0.5rem;
+    --s2: 1rem;
+    --s3: 1.5rem;
+    --s4: 2.5rem;
+    --s5: 4rem;
+    --s6: 6.5rem;
+    --wrap: 76rem;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--on-light);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-stretch: 100%;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-variant-numeric: tabular-nums;
+  }
+  h1, h2, h3 {
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-stretch: 115%;
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  p { margin: 0 0 var(--s2); max-width: 62ch; }
+  a { color: inherit; }
+  img, svg, canvas { display: block; max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .skip-link {
+    position: absolute; left: 1rem; top: -5rem; z-index: 300;
+    background: var(--flag); color: var(--ink);
+    padding: 0.75rem 1.1rem; border-radius: 8px; font-weight: 700; text-decoration: none;
+  }
+  .skip-link:focus { top: 1rem; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    min-height: 48px; padding: 0.8rem 1.4rem; border-radius: 8px;
+    font: inherit; font-weight: 650; font-size: 1rem; text-decoration: none;
+    border: 1px solid transparent; cursor: pointer;
+    transition: background-color 180ms ease, transform 180ms var(--ease-out), border-color 180ms ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-flag { background: var(--flag); color: var(--ink); }
+  .btn-flag:hover { background: var(--flag-hover); }
+  .btn-glass {
+    color: var(--on-dark);
+    background: rgba(234, 241, 245, 0.08);
+    border-color: var(--glass-dark-border);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  }
+  .btn-glass:hover { background: rgba(234, 241, 245, 0.14); }
+  .btn svg { flex: none; }
+
+  /* ================= NAV (glass layer 1: strongest blur) ================= */
+  .site-nav {
+    position: fixed; z-index: 100; left: 0; right: 0;
+    top: calc(env(safe-area-inset-top, 0px) + 14px);
+    padding-inline: clamp(0.75rem, 3vw, 1.5rem);
+    pointer-events: none;
+  }
+  .nav-bar {
+    pointer-events: auto;
+    max-width: var(--wrap); margin-inline: auto;
+    display: flex; align-items: center; justify-content: space-between; gap: var(--s2);
+    padding: 0.55rem 0.6rem 0.55rem 1.1rem;
+    background: rgba(248, 250, 251, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 14px;
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: 0 10px 30px rgba(10, 17, 21, 0.2);
+    color: var(--on-light);
+  }
+  .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .brand-logo { display: block; height: 38px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    display: inline-flex; align-items: center; min-height: 44px;
+    padding: 0 0.8rem; border-radius: 8px;
+    text-decoration: none; font-size: 0.95rem; font-weight: 550; color: #1F2B32;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+  .nav-links a:hover { color: var(--ink); background: rgba(0, 159, 215, 0.12); }
+  .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+  .nav-phone { font-weight: 650; }
+  .nav-bar .btn-glass { color: var(--on-light); background: rgba(15, 23, 28, 0.05); border-color: rgba(15, 23, 28, 0.14); }
+  .nav-bar .btn-glass:hover { background: rgba(0, 159, 215, 0.12); }
+  .nav-cta { min-height: 44px; padding: 0.55rem 1rem; font-size: 0.95rem; }
+  .menu-toggle {
+    display: none; min-height: 44px; min-width: 44px; border-radius: 8px;
+    background: rgba(15, 23, 28, 0.05); border: 1px solid rgba(15, 23, 28, 0.14); color: var(--on-light);
+    align-items: center; justify-content: center; cursor: pointer;
+  }
+  .mobile-menu {
+    pointer-events: auto;
+    max-width: var(--wrap); margin: 0.5rem auto 0;
+    background: rgba(248, 250, 251, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 14px; padding: 0.5rem;
+    -webkit-backdrop-filter: blur(20px) saturate(150%); backdrop-filter: blur(20px) saturate(150%);
+  }
+  .mobile-menu ul { list-style: none; margin: 0; padding: 0; }
+  .mobile-menu a {
+    display: flex; align-items: center; min-height: 48px; padding: 0 1rem; border-radius: 8px;
+    color: var(--on-light); text-decoration: none; font-weight: 600;
+  }
+  .mobile-menu a:hover { background: rgba(0, 159, 215, 0.12); }
+
+  .nav-links a[aria-current="page"] { color: var(--flag-ink); box-shadow: inset 0 -2px 0 var(--flag); }
+  .mobile-menu a[aria-current="page"] { color: var(--flag-ink); }
+
+  .section { padding-block: var(--s6); position: relative; }
+  .section-light { background: var(--paper); color: var(--on-light); }
+  .section-dark { background: var(--ink); color: var(--on-dark); }
+  .section-head { max-width: 40rem; margin-bottom: var(--s4); }
+  .section-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
+  .section-head p { margin-top: var(--s2); font-size: 1.08rem; }
+  .section-light .section-head p { color: var(--on-light-muted); }
+  .section-dark .section-head p { color: var(--on-dark-muted); }
+
+  .contours { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+
+  /* ================= TEAM HERO ================= */
+  .team-hero {
+    position: relative; overflow: hidden; color: var(--on-dark);
+    padding-block: calc(env(safe-area-inset-top, 0px) + 9.5rem) var(--s6);
+    background: radial-gradient(120% 90% at 78% 30%, #182631 0%, var(--ink) 55%, var(--ink-3) 100%);
+  }
+  .team-hero-grid {
+    position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--s5); align-items: end;
+  }
+  .team-lead { color: var(--flag); font-weight: 650; font-size: 0.98rem; margin-bottom: var(--s2); }
+  .team-hero h1 { font-size: clamp(2.5rem, 5.6vw, 4.4rem); }
+  .team-intro { margin-top: var(--s3); font-size: 1.12rem; color: #C2CFD6; max-width: 46ch; }
+
+  /* glass layer 1 (dark): combined experience, measured like a chain */
+  .crew-readout {
+    background: var(--glass-dark); border: 1px solid var(--glass-dark-border); border-radius: var(--radius-lg);
+    padding: var(--s3) var(--s3) var(--s3);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .crew-total { display: flex; align-items: baseline; gap: var(--s2); }
+  .crew-total-num { font-stretch: 118%; font-weight: 800; font-size: clamp(4.2rem, 8vw, 6.2rem); line-height: 0.9; letter-spacing: -0.03em; color: var(--flag); }
+  .crew-total-text { font-weight: 600; line-height: 1.3; max-width: 13ch; }
+  .tape { display: flex; gap: 3px; margin-top: var(--s3); }
+  .tape-seg { height: 14px; border-radius: 2px; transform-origin: left center; position: relative; }
+  .tape-seg::after {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(90deg, rgba(15, 23, 28, 0.55) 0 1px, transparent 1px calc(100% / var(--ticks)));
+  }
+  .seg-brad { flex: 25 1 0; background: var(--flag); --ticks: 5; }
+  .seg-eric { flex: 23 1 0; background: var(--grid); --ticks: 4.6; }
+  .tape-legend { display: flex; gap: 3px; margin: 0.6rem 0 0; padding: 0; list-style: none; }
+  .tape-legend li { font-size: 0.92rem; color: var(--on-dark-muted); }
+  .tape-legend li:first-child { flex: 25 1 0; }
+  .tape-legend li:last-child { flex: 23 1 0; }
+  .tape-legend strong { display: block; color: var(--on-dark); font-weight: 650; }
+
+  /* ================= PROFILES ================= */
+  .crew { position: relative; overflow: hidden; padding-block: var(--s6); }
+  .crew > .wrap { position: relative; }
+  .member {
+    position: relative; display: grid; grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5.5rem); align-items: center;
+  }
+  .member + .member { margin-top: var(--s6); }
+  .member-flip { grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); }
+  .member-flip .stake { order: 2; }
+
+  /* the portrait, staked out like a parcel: 4 corner monuments + boundary */
+  .stake { position: relative; margin: 0; padding: 20px; }
+  .stake-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: var(--line-light); }
+  .stake-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .bnd { position: absolute; background: var(--ink); }
+  .bnd-l { left: 7px; top: 7px; bottom: 7px; width: 2px; transform-origin: center bottom; }
+  .bnd-t { top: 7px; left: 7px; right: 7px; height: 2px; transform-origin: left center; }
+  .bnd-r { right: 7px; top: 7px; bottom: 7px; width: 2px; transform-origin: center top; }
+  .bnd-b { bottom: 7px; left: 7px; right: 7px; height: 2px; transform-origin: right center; }
+  .mon { position: absolute; width: 16px; height: 16px; border-radius: 50%; background: var(--flag); border: 2.5px solid var(--ink); }
+  .mon-bl { left: 0; bottom: 0; } .mon-tl { left: 0; top: 0; } .mon-tr { right: 0; top: 0; } .mon-br { right: 0; bottom: 0; }
+
+  /* glass layer 2 (light, over the photo): years in the field */
+  .stake-chip {
+    position: absolute; left: 14px; bottom: 14px; margin: 0;
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.55rem 0.95rem 0.55rem 0.8rem; border-radius: 12px;
+    background: rgba(248, 250, 251, 0.8); border: 1px solid rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 12px 30px -12px rgba(10, 17, 21, 0.45);
+    color: var(--on-light);
+  }
+  .chip-num { font-stretch: 118%; font-weight: 800; font-size: 2.3rem; line-height: 1; color: var(--flag-ink); }
+  .chip-text { font-weight: 600; font-size: 0.92rem; line-height: 1.25; max-width: 14ch; }
+
+  .member-role { color: var(--flag-ink); font-weight: 650; margin-bottom: 0.4rem; }
+  .member-name { font-stretch: 118%; font-weight: 800; font-size: clamp(2.1rem, 4.2vw, 3.3rem); line-height: 1; }
+  .rls {
+    display: inline-block; vertical-align: 0.35em; margin-left: 0.35rem;
+    font-size: 0.34em; font-stretch: 100%; font-weight: 700; letter-spacing: 0.02em;
+    padding: 0.28em 0.55em; border: 1.5px solid var(--flag-ink); border-radius: 6px;
+    color: var(--flag-ink); text-decoration: none;
+  }
+  .member-summary { margin-top: var(--s2); font-size: 1.08rem; color: var(--on-light-muted); max-width: 48ch; }
+
+  /* credentials as a drawing title block, on light glass (layer 3: softest blur) */
+  .sheet {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin: var(--s3) 0 0;
+    background: var(--glass-light); border: 1px solid var(--line-light); border-radius: 4px;
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  }
+  .sheet-cell { padding: var(--s2) var(--s3); border-top: 1px solid var(--line-light); }
+  .sheet-cell:nth-child(-n+2) { border-top: 0; }
+  .sheet-cell:nth-child(odd):not(.sheet-wide) { border-right: 1px solid var(--line-light); }
+  .sheet-wide { grid-column: 1 / -1; }
+  .sheet-wide + .sheet-cell, .sheet-cell + .sheet-wide { border-top: 1px solid var(--line-light); }
+  .sheet dt { font-size: 0.8rem; color: var(--on-light-muted); margin-bottom: 0.35rem; }
+  .sheet dd { margin: 0; font-weight: 600; }
+  .states { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+  .states li { padding: 0.2rem 0.65rem; border-radius: 999px; background: rgba(0, 159, 215, 0.12); border: 1px solid rgba(0, 113, 154, 0.35); color: var(--on-light); font-size: 0.92rem; }
+  .edu { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s2); margin: 0; padding: 0; list-style: none; }
+  .edu li { display: flex; flex-direction: column; }
+  .edu span { font-weight: 400; color: var(--on-light-muted); font-size: 0.95rem; }
+
+  /* ================= CTA ================= */
+  .team-cta { overflow: hidden; }
+  .team-cta .wrap { position: relative; }
+  .team-cta h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); max-width: 22ch; }
+  .team-cta p { margin-top: var(--s2); color: var(--on-dark-muted); font-size: 1.08rem; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--s3); }
+
+  /* ================= FOOTER (plat title block) ================= */
+  .site-footer { background: var(--ink-3); color: var(--on-dark); padding-block: var(--s5) calc(var(--s4) + env(safe-area-inset-bottom, 0px)); }
+  .title-block {
+    display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.2fr);
+    border: 1px solid rgba(150, 184, 200, 0.3); border-radius: 4px;
+  }
+  .tb-cell { padding: var(--s2) var(--s3); border-right: 1px solid rgba(150, 184, 200, 0.3); overflow-wrap: anywhere; }
+  .tb-cell:nth-child(4n) { border-right: 0; }
+  .tb-cell:nth-child(n+5) { border-top: 1px solid rgba(150, 184, 200, 0.3); }
+  .tb-label { display: block; font-size: 0.78rem; color: var(--on-dark-muted); margin-bottom: 0.25rem; }
+  .tb-value { font-weight: 600; font-size: 0.98rem; }
+  .tb-firm { font-stretch: 118%; font-weight: 800; font-size: 1.35rem; line-height: 1.1; }
+  .tb-value a { text-decoration: none; }
+  .tb-value a:hover { color: var(--flag); }
+  .footer-note { margin-top: var(--s2); font-size: 0.85rem; color: #7D8E97; }
+
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 1060px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: inline-flex; }
+  }
+  @media (max-width: 900px) {
+    .team-hero { padding-top: calc(env(safe-area-inset-top, 0px) + 8rem); }
+    .team-hero-grid, .member, .member-flip { grid-template-columns: minmax(0, 1fr); }
+    .member-flip .stake { order: 0; }
+    .stake { max-width: 24rem; }
+    .title-block { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .tb-cell:nth-child(2n) { border-right: 0; }
+    .tb-cell:nth-child(n+3) { border-top: 1px solid rgba(150, 184, 200, 0.3); }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .nav-phone-label { display: none; }
+    .nav-cta { display: none; }
+    .brand-logo { height: 32px; }
+    .sheet { grid-template-columns: minmax(0, 1fr); }
+    .sheet-cell { border-right: 0 !important; }
+    .sheet-cell:nth-child(2) { border-top: 1px solid var(--line-light); }
+    .edu { grid-template-columns: minmax(0, 1fr); }
+    .cta-actions .btn { width: 100%; }
+    .title-block { grid-template-columns: minmax(0, 1fr); }
+    .tb-cell { border-right: 0; }
+    .tb-cell + .tb-cell { border-top: 1px solid rgba(150, 184, 200, 0.3); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header class="site-nav">
+  <div class="nav-bar">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="images/nyberg-logo.webp" width="1200" height="270" alt="Nyberg Surveying, home" />
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#why">Why Nyberg</a></li>
+        <li><a href="index.html#history">Since 1982</a></li>
+        <li><a href="team.html" aria-current="page">Team</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-glass nav-cta nav-phone" href="tel:+13207624111">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span class="nav-phone-label">(320) 762-4111</span>
+      </a>
+      <a class="btn btn-flag nav-cta" href="index.html#contact">Request a survey</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <ul>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#why">Why Nyberg</a></li>
+      <li><a href="index.html#history">Since 1982</a></li>
+      <li><a href="team.html" aria-current="page">Meet the team</a></li>
+      <li><a href="index.html#contact">Request a survey</a></li>
+      <li><a href="tel:+13207624111">Call (320) 762-4111</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="team-hero" aria-labelledby="team-title">
+    <svg class="contours" data-contours="dark" aria-hidden="true"></svg>
+    <div class="wrap team-hero-grid">
+      <div>
+        <p class="team-lead">Meet the team</p>
+        <h1 id="team-title">Brad and Eric Nyberg</h1>
+        <p class="team-intro">Brothers, owners, and the firm's two registered land surveyors. They run the business their father, Michael, founded in 1982, and between them they're licensed in Minnesota, North Dakota, and South Dakota.</p>
+      </div>
+      <div class="crew-readout">
+        <p class="crew-total">
+          <span class="crew-total-num" aria-hidden="true" data-count="48">48</span>
+          <span class="crew-total-text"><span class="sr-only">48 </span>years of land surveying between them</span>
+        </p>
+        <div class="tape" aria-hidden="true">
+          <span class="tape-seg seg-brad"></span>
+          <span class="tape-seg seg-eric"></span>
+        </div>
+        <ul class="tape-legend">
+          <li><strong>Brad</strong>25 years</li>
+          <li><strong>Eric</strong>23 years</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROFILES ============ -->
+  <section class="section-light crew" aria-label="Our registered land surveyors">
+    <svg class="contours" data-contours="light" aria-hidden="true"></svg>
+    <div class="wrap">
+
+      <article class="member" id="brad" aria-labelledby="brad-name">
+        <figure class="stake">
+          <div class="stake-photo">
+            <img src="images/team/brad-nyberg-720.webp"
+                 srcset="images/team/brad-nyberg-420.webp 420w, images/team/brad-nyberg-720.webp 720w"
+                 sizes="(max-width: 900px) min(24rem, 90vw), 26rem"
+                 width="720" height="900"
+                 alt="Brad M. Nyberg, owner and registered land surveyor, at his desk in the Nyberg Surveying office" />
+            <p class="stake-chip"><span class="chip-num">25</span><span class="chip-text">years in land surveying</span></p>
+          </div>
+          <span class="bnd bnd-l" aria-hidden="true"></span><span class="bnd bnd-t" aria-hidden="true"></span><span class="bnd bnd-r" aria-hidden="true"></span><span class="bnd bnd-b" aria-hidden="true"></span>
+          <span class="mon mon-bl" aria-hidden="true"></span><span class="mon mon-tl" aria-hidden="true"></span><span class="mon mon-tr" aria-hidden="true"></span><span class="mon mon-br" aria-hidden="true"></span>
+        </figure>
+        <div class="member-info">
+          <p class="member-role">Owner</p>
+          <h2 class="member-name" id="brad-name">Brad M. Nyberg <abbr class="rls" title="Registered Land Surveyor">R.L.S.</abbr></h2>
+          <p class="member-summary">Registered land surveyor in Minnesota and South Dakota, and County Surveyor for Stevens County, Minnesota.</p>
+          <dl class="sheet">
+            <div class="sheet-cell">
+              <dt>Licensed in</dt>
+              <dd><ul class="states"><li>Minnesota</li><li>South Dakota</li></ul></dd>
+            </div>
+            <div class="sheet-cell">
+              <dt>Public office</dt>
+              <dd>County Surveyor, Stevens County, MN</dd>
+            </div>
+            <div class="sheet-cell sheet-wide">
+              <dt>Community</dt>
+              <dd>Active in the community, serving on several committees and organizations</dd>
+            </div>
+            <div class="sheet-cell sheet-wide">
+              <dt>Education</dt>
+              <dd>
+                <ul class="edu">
+                  <li><strong>St. Cloud State University</strong><span>Bachelor of Science</span></li>
+                  <li><strong>St. Cloud Technical College</strong><span>AAS, Civil Engineering Technology</span></li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="member member-flip" id="eric" aria-labelledby="eric-name">
+        <figure class="stake">
+          <div class="stake-photo">
+            <img src="images/team/eric-nyberg-720.webp"
+                 srcset="images/team/eric-nyberg-420.webp 420w, images/team/eric-nyberg-720.webp 720w"
+                 sizes="(max-width: 900px) min(24rem, 90vw), 26rem"
+                 width="720" height="900" loading="lazy"
+                 alt="Eric G. Nyberg, owner and registered land surveyor, at his desk in the Nyberg Surveying office" />
+            <p class="stake-chip"><span class="chip-num">23</span><span class="chip-text">years in land surveying</span></p>
+          </div>
+          <span class="bnd bnd-l" aria-hidden="true"></span><span class="bnd bnd-t" aria-hidden="true"></span><span class="bnd bnd-r" aria-hidden="true"></span><span class="bnd bnd-b" aria-hidden="true"></span>
+          <span class="mon mon-bl" aria-hidden="true"></span><span class="mon mon-tl" aria-hidden="true"></span><span class="mon mon-tr" aria-hidden="true"></span><span class="mon mon-br" aria-hidden="true"></span>
+        </figure>
+        <div class="member-info">
+          <p class="member-role">Owner</p>
+          <h2 class="member-name" id="eric-name">Eric G. Nyberg <abbr class="rls" title="Registered Land Surveyor">R.L.S.</abbr></h2>
+          <p class="member-summary">Registered land surveyor in Minnesota and North Dakota.</p>
+          <dl class="sheet">
+            <div class="sheet-cell sheet-wide">
+              <dt>Licensed in</dt>
+              <dd><ul class="states"><li>Minnesota</li><li>North Dakota</li></ul></dd>
+            </div>
+            <div class="sheet-cell sheet-wide">
+              <dt>Community</dt>
+              <dd>Active in the community, serving on several committees and organizations</dd>
+            </div>
+            <div class="sheet-cell sheet-wide">
+              <dt>Education</dt>
+              <dd>
+                <ul class="edu">
+                  <li><strong>St. Cloud State University</strong><span>Bachelor of Science</span></li>
+                  <li><strong>St. Cloud Technical College</strong><span>AAS, Civil Engineering Technology</span></li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section section-dark team-cta" aria-labelledby="cta-title">
+    <svg class="contours" data-contours="dark" aria-hidden="true"></svg>
+    <div class="wrap">
+      <h2 id="cta-title">Talk to Brad or Eric about your property</h2>
+      <p>Send a request or call the office. We'll follow up with scheduling and a quote.</p>
+      <div class="cta-actions">
+        <a class="btn btn-flag" href="index.html#contact">Request a survey</a>
+        <a class="btn btn-glass" href="tel:+13207624111">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          Call (320) 762-4111
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER / TITLE BLOCK ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="title-block">
+      <div class="tb-cell"><span class="tb-label">Firm</span><span class="tb-firm">Nyberg Surveying, Inc.</span></div>
+      <div class="tb-cell"><span class="tb-label">Office</span><span class="tb-value">509 22nd Ave E, Suite 101<br />Alexandria, MN 56308</span></div>
+      <div class="tb-cell"><span class="tb-label">Phone</span><span class="tb-value"><a href="tel:+13207624111">(320) 762-4111</a></span></div>
+      <div class="tb-cell"><span class="tb-label">Email</span><span class="tb-value"><a href="mailto:info@nybergsurveying.com">info@nybergsurveying.com</a></span></div>
+      <div class="tb-cell"><span class="tb-label">Services</span><span class="tb-value">Boundary, ALTA/NSPS, topographic, subdivision, permit, staking</span></div>
+      <div class="tb-cell"><span class="tb-label">Coverage</span><span class="tb-value">Minnesota, North Dakota, South Dakota</span></div>
+      <div class="tb-cell"><span class="tb-label">Established</span><span class="tb-value">1982</span></div>
+      <div class="tb-cell"><span class="tb-label">Office hours</span><span class="tb-value">Mon to Fri, 8:00 AM to 4:30 PM</span></div>
+    </div>
+    <p class="footer-note">&copy; 2026 Nyberg Surveying, Inc. Redesign concept.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- mobile menu ---------- */
+  var toggle = document.querySelector(".menu-toggle");
+  var menu = document.getElementById("mobile-menu");
+  function setMenu(open) {
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menu.hidden = !open;
+  }
+  toggle.addEventListener("click", function () { setMenu(menu.hidden); });
+  menu.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menu.hidden) { setMenu(false); toggle.focus(); } });
+
+  /* ---------- contour line backgrounds ---------- */
+  document.querySelectorAll("svg[data-contours]").forEach(function (svg) {
+    var dark = svg.getAttribute("data-contours") === "dark";
+    var W = 1600, H = 1000, n = 22;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+    var ns = "http://www.w3.org/2000/svg", frag = document.createDocumentFragment();
+    for (var i = 0; i < n; i++) {
+      var y0 = 30 + i * (H / n), d = "";
+      for (var x = 0; x <= W; x += 32) {
+        var y = y0 + 26 * Math.sin(x * 0.0036 + i * 0.42) + 14 * Math.sin(x * 0.0105 + i * 1.3) + 9 * Math.cos(x * 0.002 - i * 0.8);
+        d += (x === 0 ? "M" : "L") + x + " " + y.toFixed(1) + " ";
+      }
+      var p = document.createElementNS(ns, "path");
+      p.setAttribute("d", d);
+      p.setAttribute("fill", "none");
+      var major = i % 5 === 0;
+      p.setAttribute("stroke", dark ? (major ? "rgba(79,130,153,0.30)" : "rgba(79,130,153,0.14)") : (major ? "rgba(79,130,153,0.45)" : "rgba(79,130,153,0.22)"));
+      p.setAttribute("stroke-width", major ? "1.4" : "1");
+      frag.appendChild(p);
+    }
+    svg.appendChild(frag);
+  });
+
+
+  /* ---------- motion: hero tape, then each portrait staked out on scroll ---------- */
+  // Everything renders in its final state first; motion only runs when GSAP loaded and the visitor allows it.
+  if (reduceMotion || !window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var num = document.querySelector(".crew-total-num");
+  var counter = { v: 0 };
+  gsap.timeline({ delay: 0.25 })
+    .to(counter, { v: 48, duration: 1.5, ease: "power2.out", onUpdate: function () { num.textContent = Math.round(counter.v); } }, 0)
+    .from(".seg-brad", { scaleX: 0, duration: 0.8, ease: "power2.inOut" }, 0)
+    .from(".seg-eric", { scaleX: 0, duration: 0.75, ease: "power2.inOut" }, 0.75);
+
+  // Set the corners in Lot 1 order (bottom-left first), run the boundary, then reveal the portrait inside it.
+  document.querySelectorAll(".stake").forEach(function (fig) {
+    var q = gsap.utils.selector(fig);
+    gsap.timeline({ scrollTrigger: { trigger: fig, start: "top 78%", once: true } })
+      .from(q(".mon"), { scale: 0, duration: 0.32, ease: "back.out(2.4)", stagger: 0.12 })
+      .from(q(".bnd-l"), { scaleY: 0, duration: 0.32, ease: "none" }, 0.1)
+      .from(q(".bnd-t"), { scaleX: 0, duration: 0.32, ease: "none" })
+      .from(q(".bnd-r"), { scaleY: 0, duration: 0.32, ease: "none" })
+      .from(q(".bnd-b"), { scaleX: 0, duration: 0.32, ease: "none" })
+      .fromTo(q(".stake-photo"), { clipPath: "inset(100% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "power3.out" }, "-=0.15")
+      .from(q(".stake-chip"), { opacity: 0, y: 10, duration: 0.45, ease: "power2.out" }, "-=0.35");
+  });
+})();
+</script>
+</body>
+</html>
