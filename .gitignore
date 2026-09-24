@@ -1,2 +1,13 @@
 __pycache__/
 *.pyc
+
+# Secrets: never commit environment files or keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies and OS noise
+node_modules/
+.DS_Store
